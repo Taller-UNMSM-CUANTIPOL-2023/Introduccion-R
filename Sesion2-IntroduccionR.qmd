@@ -21,18 +21,27 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 
 *Presentarme, que me llamen por mi nombre. RAAAAAAAAAAAAAAAAAAAAA*
 
+RECOMENDACIONES INICIALES: NO ABRUMARSE, ES APRENDER UN LENGUAJE NUEVO, O SEA, NO VA A SER FACIL. PROGRAMA MUY INTUTIVO
 
-# ¿Qué buscamos con el taller?
+CUALQUIERE DUDA, PREGUNTAR POR CHAT O POR PRIVADO O PRENDER EL MICROFONO O ENVIARME UN CORREO AMÍ O A LOS DEMAS ASESORES.
+
+
+
+
+
+1. ¿Qué buscamos con el taller?
 ============================================================
-- El objetivo de este curso es introducirnos al lenguaje y al uso de R y explorar los usos más comunes y útiles para el análisis de datos.
+- El objetivo es introducirnos al lenguaje y al uso de R y explorar los usos más comunes y útiles para el análisis de datos.
 
-- No es un curso exhaustivo que abarque todas las múltiples aplicaciones y posibilidades que se puede aprovechar utilizando R.
+- No es un curso exhaustivo que abarque las múltiples aplicaciones y posibilidades que se puede aprovechar utilizando R.
 
         -   Vamos a tratar de hablar "todos el mismo idioma" es decir trabajar sobre los fundamentos, y eso les permitirá luego ir expandiendo su bagaje de R hacia los usos que quieran o necesiten darle.
 
         -   La estrategia entonces será cubrir lo principal y trataremos de motivar y dar un pantallazo de los temas más avanzados o específicos como herramienta inicial que permita luego profundizar la investigación que desarrollen a lo largo del curso.
 
-        -   Además, les trataré de compartir algunos tips o atajos que me hubiesen gustado saber...
+        -   Además, les trataré de compartir algunos tips o atajos que me hubiesen gustado conocer cuando comence con R y que espero que sea de mucho provecho para ustedes...
+
+*El siguiente objetivo del taller es su*
 
 -   Proyecto final del taller:
 
@@ -43,48 +52,41 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
         -   En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
 
 
-
 *-COMENZAR DESDE AQUI-*
 
 
-# Configurar el directorio de trabajo
+# 1.2 Repasemos la instalación...
+
+
+# 2. Configurar el directorio de trabajo
  
-- R funciona como un entorno temporal de trabajo, esto quiere decir que el usuario va agregando datos y objetos, pero si los análisis no son guardados se deberán repetir las instrucciones para obtener otra vez el resultado. Por esta razón, es preciso configurar una carpeta predeterminada en nuestro ordenador, donde el programa buscará los archivos a ejecutar y guardará los archivos a conservar con cambios.
+   - Para importar y exportar nuestra data, es importante tener en cuenta a qué carpeta se están cargando los archivos. Esta carpeta es el Working directory (directorio de trabajo).
+ 
+*R funciona como un entorno temporal de trabajo, esto quiere decir que el usuario va agregando datos y objetos, pero si los análisis no son guardados se deberán repetir las instrucciones para obtener otra vez el resultado. Por esta razón, es preciso configurar una carpeta predeterminada en nuestro ordenador, donde el programa buscará los archivos a ejecutar y guardará los archivos a conservar con cambios.*
 
-- Para ver nuestro lugar de trabajo actual escribimos el siguiente comando (escriba el código en la consola, ya que si lo ejecuta desde este Rmd, obtendrá el lugar donde se encuentra este archivo):
+- Para encontrar nuestro lugar de trabajo actual, escribimos el siguiente comando (escriba el código en la consola, ya que si lo ejecuta desde este Rmd, obtendrá el lugar donde se encuentra este archivo): `getwd()` (sin las comillas invertidas)
 
+- Si queremos cambiar nuestro directorio de trabajo a uno específico corremos la siguiente
+función:
 ```{r}
-getwd()
-
-setwd(C:/Users/User/Documents/GitHub/Sesion-2)
-
-dir()
+#dir() # Ver qué archivos están en el directorio o en el lugar en que se encuentre
+#setwd() # Establecer el nuevo directorio
 ```
 
-Si queremos cambiar de directorio de trabajo, nos dirigirnos al menú “Session” > “Set Working Directory”
-> “Choose Directory”. Esto abrirá una ventana emergente, donde buscaremos la carpeta en la cual vamos
-a trabajar, la ubicamos y seleccionamos “Open”. Para verificar el cambio volvemos a digitar la función
-“getwd()” en la consola.
+- Otra opción para cambiar de directorio de trabajo:
 
+  - Nos dirigirnos al menú “Session” \> “Set Working Directory” \> “Choose Directory”. Esto abrirá una ventana emergente, en la que buscaremos la carpeta en la cual vamos a trabajar, la ubicamos y seleccionamos “Open”. Para verificar el cambio volvemos a digitar la función `getwd()` en la consola.
 
+- Si está en otra subcarpeta:
+```{r}
+#library(rio)
+#data = import("./pavimentandoconvotos.sav") 
+# ./ El punto + slash indica que jalaremos la base de una subcarpeta 
+```
 
+  - Luego verán otros modos para importar bases de datos directamente desde internet. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ¿Qué es R?
+2. ¿Qué es R?
 ============================================================
 +   R es un lenguaje y es un software que permite el análisis estadístico y gráfico.
 
@@ -93,7 +95,7 @@ a trabajar, la ubicamos y seleccionamos “Open”. Para verificar el cambio vol
     + Es un software porque es al mismo tiempo un programa o entorno integrado con múltiples funcionalidades
 
 
-## ...¿Y RStudio?
+## ... ¿Y RStudio?
 
 -   Rstudio es un integrated development environment - [IDE](https://posit.co/products/open-source/rstudio/): un interfaz amigable y poderoso para trabajar con R.
 
@@ -110,11 +112,12 @@ a trabajar, la ubicamos y seleccionamos “Open”. Para verificar el cambio vol
     
 -   Accesibilidad al usuario: Lenguaje de Programación R (Antes de 1970)
 
-    + Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.
 
-    + Está especialmente enfocado en tareas de cómputo y análisis estadístico
+    + Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.
     
-    + R es un lenguaje del tipo "domain-specific language (DSL)" porque sus funciones están pensados para un área de uso o dominio específico. En este caso para el análisis estadístico y gráfico de manera eficiente y sucinta.
+- R es un lenguaje del tipo "domain-specific language (DSL)" porque sus funciones están pensados para un área de uso o dominio específico
+    
+    + En este caso Está especialmente enfocado en tareas de cómputo y análisis estadístico y gráfico de manera eficiente y sucinta.
     
 -   Versatilidad: Muchas extensiones: GIS, Quarto, etc.
 
@@ -155,13 +158,6 @@ Python o Stata)
     + Subir y publicar contenido con R-markdown
 
 
-# Programando en R
-```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). Ppt curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
-knitr::include_graphics("programando.jpg") 
-```
-
-# Repasemos la instalación...
-
 
 # INTERFACE
 *Básicamente al trabajar en RStudio, estaremos interacturando con estos 4 paneles. Veamos para qué utilizamos cada uno:*
@@ -175,15 +171,15 @@ knitr::include_graphics("interface.jpg")
 
 1.  **Console (La consola)**
 ============================================================
--     visualizar el output de nuestros códigos
+- visualizar el output de nuestros códigos
 
     -   Es la salida de R, el lugar donde visualizamos el output, lo que ocurre al correr el código. A diferencia del script este ouptut se limpia cada vez que abrimos RStudio. Cuando el código corre bien, veremos letras moradas en la consola y cuando hay un error o una advertencia, en color rojo. Además, cualquier código que corramos en el script aparecerá en la consola como una manera de llevar un registro durante la sesión. 
     
--     Útil cuando queremos ejecutar porciones de código pequeñas.
+- Útil cuando queremos ejecutar porciones de código pequeñas.
 
     -   podemos ingresar código de R directamente en la consola, pero que a diferencia del script no se guardará como parte de un documento. pero es útil cuando queremos ejecutar porciones de código pequeñas o realizar operaciones matemáticas (R es como una calculadora…pro).
 
--     Podemos realizar cálculos y operaciones matemáticas como una calculadora avanzada.
+- Podemos realizar cálculos y operaciones matemáticas como una calculadora avanzada.
 
 
 *Correr esto en el Console:*
@@ -195,24 +191,14 @@ mean(c(1, 2, 3, 4, 5, 6))
 
 2.
 ```{r}
-names(starwars) # Nombre de las variables
-str(starwars) # Estructura de las variables
+#names(starwars) # Nombre de las variables
+#str(starwars) # Estructura de las variables
 ```
 3.
 ```{r}
 1000454656/256
 pi
 ```
-
-
-2.  ** Script (El editor)**
-============================================================
--   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
-    
-    -   Se encuentran los archivos o scripts (usualmente extensión .R y .Rmd) en los cuales podemos escribir código que queremos preservar o revisar más adelante. Si hacemos la analogía con Office Word, en el panel 1 estaría el documento en blanco a editar.
-    
-    Es nuestro cuaderno, nuestro block de notas. Allí escribimos las líneas de códigos de nuestro proyecto y una vez que lo guardemos podremos volver a retomar desde donde dejamos. Desde el script podremos correr estos códigos directamente. Para comenzar un script vamos a File --> New File --> R Script. Para abrir un script guardado vamos a File --> Open File
-
 
 Tambien podemos llamar dataset precargadas en R como...
 
@@ -223,17 +209,31 @@ cars
 ```
 
 ```{r}
-pacman::p_load(tidyverse) # 
+library(tidyverse)  
 starwars
 ```
 
 ```{r}
-airquality #Dataset precargado en R
-
+airquality 
 head(airquality)
 ```
 
-3.  ** Environment (El entorno de variables)**
+2.  ** Script (El editor)**
+============================================================
+-   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
+    
+    -   Se encuentran los archivos o scripts (usualmente extensión .R y .Rmd) en los cuales podemos escribir código que queremos preservar o revisar más adelante. Si hacemos la analogía con Office Word, en el panel 1 estaría el documento en blanco a editar.
+    
+    Es nuestro cuaderno, nuestro block de notas. Allí escribimos las líneas de códigos de nuestro proyecto y una vez que lo guardemos podremos volver a retomar desde donde dejamos. Desde el script podremos correr estos códigos directamente. Para comenzar un script vamos a File --> New File --> R Script. Para abrir un script guardado vamos a File --> Open File
+
+- Más sobre los tipos de archivos: 
+
+  - [📑Script, R Markdown y R Notebook 📓: Principales diferencias](https://www.youtube.com/watch?v=y7JPGlw6dJg)
+  
+  - [Como crear un pdf en R Markdown sin instalar LaTeX](https://www.youtube.com/watch?v=vyqCebNkreI)
+
+
+3.  **Environment (El entorno de variables)**
 ============================================================
 -   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
      
@@ -254,12 +254,10 @@ datos <- airquality # La tabla de la calidad del aire en una variable llamada 'd
     
     
 
-4.  **Panel de Visualización**
+4. **Panel de Visualización**
 ============================================================
 
-- Se encuentran los archivos del usuario como si fuera la carpeta de “Mis Documentos”
-en Windows. De esta manera podemos acceder fácilmente a archivos de nuestra
-computadora y de nuestro directorio de trabajo.
+- Se encuentran los archivos del usuario como si fuera la carpeta de “Mis Documentos” en Windows. De esta manera podemos acceder fácilmente a archivos de nuestra computadora y de nuestro directorio de trabajo.
 
 nos permite interactuar de forma fácil con los subdirectorios (pestaña Files), visualizar los gráficos que creamos (pestaña Plots), cargar y buscar paquetes manualmente (pestaña Packages), acceder al help de cada función (pestaña Help) y visualizar contenido html (pestaña Viewer). Es una especie de atajo multiuso.
 
@@ -312,6 +310,26 @@ nos permite interactuar de forma fácil con los subdirectorios (pestaña Files),
 **Ojo: podemos realizar estos cambios y otros según nuestra curiosidad o interés.**  
 
 
+
+*Ahora sí ya estamos listos para meternos de lleno en los conceptos principales de R e ir, en simultaneo, corriendo y probando cada aplicación que vayamos viendo. Esta será la dinámica propuesta para el aprendizaje.*
+
+*Comenzaremos por los elementos fundamentales, para construir desde lo más básico de manera aditiva y progresiva.*
+
+Ahora sí se viene lo chido...
+
+
+
+
+
+
+# Programando en R
+```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
+knitr::include_graphics("programando.jpg") 
+```
+
+
+Pero también es importante los reportes:
+
 # Para mejorar nuestros reportes, tomemos en cuenta la sintaxis de Rmd y de casi todos los demás formatos para realizar estos reportes:
 
   + **bolding words** <- negrita
@@ -336,10 +354,33 @@ Para escribir una nueva oración, debemos dejar una linea de código y que no se
 ###
 ````
 
+Cómo estudiar: 
+
 - Realizar comentarios para los comandos que se van a explicar a lo largo del curso: #
 ```{r}
 # Dentro de los chunks también puedo comentar mis códigos, etc.
 ```
+
+*hacer comentarios en el code chunk o tambien en el scrpit. practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD*
+
+es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
+
+Como se mencionó anteriormente, programar de manera ordenada no solo es beneficioso para nuestros colegas que revisarán la investigación sino también para nosotros mismos para que en caso revisitemos nuestro código sepamos exactamente para qué servía cada función y con qué intención se había empleado. Es por ello que es de utilidad comentar el código utilizado precisando lo que realiza cada función.
+
+Es necesario comentar que los lenguajes de programación iniciales tienen una amplia influencia anglosajona. En 1963, se creó el ASCII, el cual es un código de caracteres basado en el alfabeto latino, tal como se usa en el inglés moderno [@mackenzie1980]. Sobre este alfabeto, las primeras computadoras IBM incorporaron el estándar ASCII y por extensión también los lenguajes de programación iniciales por lo que muchas veces nos encontraremos con algunos errores de lectura de caracteres especiales como "ñ", "ó", "ü", entre otras. Por lo que se deben considerar los siguientes puntos al manipular la data:
+
+-   Guardar los objetos con nombres cortos, auto-descriptivos, sin espacios, y sin caracteres especiales. Del mismo modo con las variables dentro de los objetos.
+
+-   Revisar en la exportación de la data si los nombres de los objetos y las variables dentro de estas se han exportado exitosamente o ha habido problemas de *encoding*. Por ejemplo, si exportamos a formato `.dta` y tenemos variables con los siguientes nombres podrían aparecer de la siguiente manera:
+
+    | variable   | variable en `.dta` | Correcto nombre de variable |
+    |------------|--------------------|-----------------------------|
+    | año        | a?o                | year                        |
+    | educación  | educaci?n          | edu                         |
+    | antigüedad | antig?edad         | antiguedad                  |
+
+
+
 
   
 ## PARA ESCONDER WARNING Y MESSAGE EN TODO EL DOCUMENTO HMTL:
@@ -359,11 +400,6 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
 # echo --> para que no aparezca el código, solo el resultado (conveniente para gráficos, mapas, etc.) 
 ```
-  
-  
-  
-  
-  
   
   
 ## Atajos útiles de teclado, los más importantes...
@@ -431,38 +467,31 @@ cars
   - literatura
 
 
+- Se puede revisar la documentación que suele venir con las funciones de R o también los foros de la comunidad de programadores [StackOverflow](https://stackoverflow.com/) en la que se realizan preguntas puntuales y se vota por la respuesta más eficiente.
 
 
 
 
+**En suma...**
 
+- 4 PANELES  
 
-### Curiosidad por entender como funciona el lenguaje
-
-Por último, al momento de programar uno se puede encontrar con infinidad de errores que suelen tener origen en un uso incorrecto de las funciones. Para ello, es necesario informarse acerca del tipo de *input* que requiere cada función y el tipo de *output* que arroja. Para ello, se puede revisar la documentación que suele venir con las funciones de R o también los foros de la comunidad de programadores [StackOverflow](https://stackoverflow.com/) en la que se realizan preguntas puntuales y se vota por la respuesta más eficiente.
-
-::: callout-note
-*"Todo lo que existe en R es un objeto, todo lo que sucede en R es una función".*
--John Chambers
-:::
-
-
-
-RESUMEN DE LA CLASE:
-
-TENEMOS 4 PANELES IMPORTANTES Y
 Parece que todo la acción es consecuencia de haber corrido un código. Y es así
 
-En la consola veremos el código en azul si corrió bien y debajo el output o salida como consecuencia de la sentencia
+En la consola veremos el código en morado si corrió bien y debajo el output o salida como consecuencia de la sentencia
 
-Si el código implica definir un objeto (ya veremos que significa esto) ese objeto aparecerá ahora en nuestro entorno de trabajo
+Si el código implica definir un objeto, ese objeto aparecerá ahora en nuestro entorno de trabajo
 
 Si el código implica generar un gráfico lo veremos en ese caso en el panel de navegación
 
 En el script no pasará nada, ya que allí solo escribimos y llamamos al código al momento de correrlo
 
 
-Bibliografía:
+
+
+
+
+**Referencias**:
 
 -   Youtube
 
@@ -474,103 +503,6 @@ Bibliografía:
 - DATAPOLITICA
 
 CITAR OTROS MÁS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://gorkang.github.io/R_preparacion_visualizacion_datos/trabajo-con-rmarkdown-para-reportes-reproducibles.html
-
-
-
-Guiarme de esta pagina:
-
-https://crisbonavida-rclass.netlify.app/programa.html
-
-
-HACER UN PEQUEÑO RESUMEN DE LA CLASE PASADA. 5 MIN
-
-RECOMENDACIONES INICIALES: NO ABRUMARSE, ES APRENDER UN LENGUAJE NUEVO, O SEA, NO VA A SER FACIL. PROGRAMA MUY INTUTIVO
-
-CUALQUIERE DUDA, PREGUNTAR POR CHAT O POR PRIVADO O PRENDER EL MICROFONO O ENVIARME UN CORREO AMÍ O A LOS DEMAS ASESORES.
-
-Cómo estudiar: 
-
-# hacer comentarios en el code chunk o tambien en el scrpit. practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD
-
-cómo guardar sus archivos: en carpetas correctamente delimitadas. comprender la sintaxis de R: mayusculas, minusculas, etc.
-
-.
-
-PEDIR MATERIAL A ALE: sobre el pipe vs el metodo tradicional
-
-ENSEÑAR COMO INSTALR GITHUB
-
-COMO INSTALAR R Y R STUDIO, QUARTO
-
-
-
-
-
-CÓMO FUNCIONAN LAS FUNCIONES EN R
-
-EJEMPLIFICAR CADA CONCEPTO, PANEL DE R
-
-AL FINAL HACER RESUMEN (SI EL TIEMPO ALCANZA). 5 MIN
-
-
-
-
-
-
-
-
-# ¿Por qué Quarto?
-
-[Ted Laderas](https://laderast.github.io/)
-
-[Quarto/RMarkdown - What’s Different?](https://laderast.github.io/qmd_rmd/#/title-slide)
-
-
-COFIGURAR EL YAML Y QMD:
-
-[How to change your document font in Quarto (HTML & PDF)](https://www.youtube.com/watch?v=yAlhq8yhLsw)
-
-
-
-# Utilizaremos Github
-
-
-CÓMO
-
-
-# UTILIZAREMOS RPUBS
-
-
-
-
-# **0.1 Guardar archivos y settear la base de datos**
-
-# **1. Introducción al R y a base de datos**
-
-Interfaz de Rstudio:
-
-
-
-Referencias:
 
 - Wickham, H., y Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.” [First Edition](https://r4ds.had.co.nz/) [Second Edition](https://r4ds.hadley.nz/)
 
@@ -584,6 +516,8 @@ Referencias:
 
 
 Más recursos:
+
+- [Trabajo con RMarkdown para reportes reproducibles](https://gorkang.github.io/R_preparacion_visualizacion_datos/trabajo-con-rmarkdown-para-reportes-reproducibles.html)
 
 - [Messy data](https://tidyr.tidyverse.org/)
 
@@ -628,6 +562,8 @@ https://holtzy.github.io/Pimp-my-rmd/
 https://www.yan-holtz.com/blog.html
 
 
+Por qué las estadísticas inteligentes son la clave para combatir el crimen
+https://www.ted.com/talks/anne_milgram_why_smart_statistics_are_the_key_to_fighting_crime?language=es
 
 
 
