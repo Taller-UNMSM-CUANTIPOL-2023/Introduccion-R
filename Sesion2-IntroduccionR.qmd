@@ -19,35 +19,112 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 # Puedes centrar, aumentar o disminuir el tamaño del gráfico (buscar códigos en internet) 
 ```
 
++ Presentarme, que me llamen por mi nombre. RAAAAAAAAAAAAAAAAAAAAA
+
+
+# ¿Qué buscamos con el taller?
+
+-   Proyecto final del taller:
+
+    -   Ejemplos...
+
+        -   En Github: [Determinantes del desempleo juvenil en el mundo](https://luccemhu.github.io/) (CAMBIAR EL NOMBRE DE ESTO JOEL)
+
+        -   En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
+
+- El objetivo de este curso es introducirnos al lenguaje y al uso de R y explorar los usos más comunes y útiles para el análisis de datos.
+
+- No es un curso exhaustivo que abarque todas las múltiples aplicaciones y posibilidades de emplear R.
+
+        -   Vamos a tratar de hablar "todos el mismo idioma" es decir trabajar sobre los fundamentos, y eso les permitirá luego ir expandiendo su bagaje de R hacia los usos que quieran o necesiten darle.
+
+        -   La estrategia entonces será cubrir lo principal y trataremos de motivar y dar un pantallazo de los temas más avanzados o específicos como herramienta inicial que permita luego profundizar la investigación que desarrollen a lo largo del curso.
+
+        -   Además, les trataré de compartir algunos tips o atajos que me hubiesen gustado saber...
+
+-COMENZAR DESDE AQUI-
+
 # ¿Qué es R?
 
 +   R es un lenguaje y es un software que permite el análisis estadístico y gráfico.
 
-+   Lenguaje porque tiene su propia sintaxis desde la cual escribir las sentencias y comandos
+    + Lenguaje porque tiene su propia sintaxis desde la cual escribir las sentencias y comandos
 
-+   Es un software porque es al mismo tiempo un programa o entorno integrado con múltiples funcionalidades
+    + Es un software porque es al mismo tiempo un programa o entorno integrado con múltiples funcionalidades
 
 
-# Si hay más softwares estadísticos, ¿porqué usamos R?
+## ...¿Y RStudio?
+
+-   Rstudio es un integrated development environment - [IDE](https://posit.co/products/open-source/rstudio/): un interfaz amigable y poderoso para trabajar con R.
+
+    + Es decir, es un entorno de desarrollo integrado para R o como indican en su web, “un set de herramientas integradas para ayudarte a ser más productivo con R”.
+
+# Pero si hay más softwares estadísticos, ¿por qué usamos (o deberíamos usar) R?
 
 -   Costo: Software libre
 
+    + R es un programa de codigo abierto y gratuito (no requiere licencia como otros softwares). Es decir de acceso libre y que se expande con contribuciones de la comunidad de usuarios (paquetes)
+    
 -   Potencia (N° herramientas): Comunidad que crea nuevas herramientas (packages) constantemente.
+
+    + Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.
+    + Está especialmente enfocado en tareas de cómputo y análisis estadístico
 
 -   Accesibilidad al usuario: Lenguaje de Programación R (Antes de 1970)
 
--   Versatilidad: Muchas extensiones: GIS, etc.
+    + R es un lenguaje del tipo "domain-specific language (DSL)" porque sus funciones están pensados para un área de uso o dominio específico. En este caso para el análisis estadístico y gráfico de manera eficiente y sucinta.
+    
+-   Versatilidad: Muchas extensiones: GIS, Quarto, etc.
+
+    + Es un programa muy versátil que permite utilizar la misma herramienta para una gran variedad de fines y aplicaciones.
+
+-   Importante:
+
+    + Ofrece numerosas herramientas para la visualización de datos de alta calidad, así como para la publicación de otros resultados de forma sencilla. R y R Studio proveen la replicabilidad de los análisis mediante scripts.
+
+
+## ¿Pará qué podemos usar R?
+
+- R y RStudio tiene una amplia variedad de usos como la limpieza, el preprocesamiento de datos, aplicaciones de Machine Learning, minería de datos y big data.
+
+- Manejo y almacenamiento de datos.
+
+- Amplia variedad de técnicas estadísticas (modelos lineales, pruebas estadísticas,
+
+- análisis de series de tiempo, clasificación, agrupación, etc.)
+
+- Utilidades graficas para la visualización de datos.
+
+- Integración con distintas bases de datos o lenguajes de otros programas (Spss,
+Python o Stata)
+
+- Diversas herramientas para el análisis de datos.
+
+- Posibilidad de creación de librerías propias para trabajos en especifico
+
+
+    + Aparte del uso mas convencional como herramienta de procesamiento estadístico, R nos puede servir para...
+    + Generar múltiples visualizaciones y personalización de gráficos
+    + Web Scraping
+    + Automatizar reportes
+    + Implementar análisis con algoritmos de Machine Learning
+    + Generar tableros o aplicaciones (shiny por ejemplo)
+    + Hacer presentaciones (o slides como estas!)
+    + Subir y publicar contenido con R-markdown
+
 
 # Programando en R
-```{r,echo=FALSE, out.width="65%",fig.align="center"}
+```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). Ppt curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
 knitr::include_graphics("programando.jpg") 
 ```
 
+- Ahora sí, comencemos...
 
+# Configuremos RStudio! **(Voluntarios uwu)+--++--+--
 
-## CONFIGURAR RStudio:
++ Solo algunos cambios para iniciar...
 
-Nos dirigirnos al menú superior: "Tools" \> "Global options..." 
++ Nos dirigirnos al menú superior: "Tools" \> "Global options..." 
 
   1. "Code" \> "Editing" y marcamos el siguiente cuadro: "Use native pipe operator..."
   
@@ -59,9 +136,9 @@ Nos dirigirnos al menú superior: "Tools" \> "Global options..."
   3. "Code" \> "Saving" y cambiamos en "Default text encoding:" a "UTF-8"
 
 
-Luego nos dirigimos: "Tools" \> "Global options..." 
++ Luego nos dirigimos: "Tools" \> "Global options..." 
 
-  1. "Appereance" \> y... marcamos lo siguiente en cada opcion
+  1. "Appereance" \> y... marcamos lo siguiente en cada opción
   
   - RStudio theme: Modern
   
@@ -73,7 +150,7 @@ Luego nos dirigimos: "Tools" \> "Global options..."
   
   - Editor theme: Pastel On Dark
   
-NOta: podemos cambiar según nuestro interés.  
+**Ojo: podemos realizar estos cambios y otros según nuestra curiosidad o interés.**  
 
 
 # Para mejorar nuestros reportes, tomemos en cuenta la sintaxis de Rmd y de casi todos los demás formatos para realizar estos reportes:
@@ -83,18 +160,111 @@ NOta: podemos cambiar según nuestro interés.
   + *italicizing words* <- cursiva
  
   + ~~striking through~~ <- tachando 
+
++ Puedes combinar las anteriores: ***Cuantipol***
   
-  + ` -> ALT + 96 
+  + 'comilla simple' <- alt + 3 + 9 <- ''
+  
+  + `comillas invertidas` <- alt + 9 + 6 <- ``
 
+````markdown
+#
 
-## Atajos: 
+##
 
+###
+````
 
-## Realizar comentarios: `#` 
-
+- Realizar comentarios para los comandos que se van a explicar a lo largo del curso: #
 ```{r}
 # Dentro de los chunks también puedo comentar mis códigos, etc.
 ```
+
+  
+## Atajos útiles de teclado, los más importantes...
+
+- Podemos ver todos los atajos en el **Panel de atajos**: tools \> Keyboard Shortcuts Help <- alt + shift + k
+
+- **Crear code chunk**  <- Ctrl + alt + i 
+```{r}
+
+```
+
+- **Correr/ejecutar code** <- Alt + enter  
+```{r}
+starwars
+```
+
+- **Ejecutar linea de código** <- ctrl + enter
+```{r}
+starwars
+cars
+```
+
+- **Guardar avance** <- ctrl + s 
+
+- Knitear/renderizar a pdf/hml/etc <- Ctrl + shift + k
+
+- Dar formato ordenado al código <- ctrl + A
+
+- Para comentar múltiples líneas de código: agrega el numeral al lado izquierdo en cada linea de codigo <- ctrl/cmd + shift + c
+
+- Para buscar y reemplazar varias palabras <- ctrl + F
+
+- Reiniciar Rstudio <- ctrl + shift + f10 
+
+- Insertar 'pipe' <- ctrl + shift + m <- `|>` 
+  
+- Operador de asignación <- alt + - (guion) o también podemos usar: <- 
+
+- Arrastrar línea de código <- alt + up o alt + down
+
+- Para desplazarnos en cada pestaña de los scripts/códigos <- ctrl + alt + (flechas: izquierda o derecha)
+  
+- Para insertar/crear secciones (títulos) <- ctrl/cmd + shift + R
+  
+
+# Algo más: Organización de carpetas
+
++ Es importante conservar un orden para realizar análisis de datos o una investigación. Se sugiere la siguiente estructura:
+
++ Nombre de la carpeta principal
+
+  - códigos
+  
+  - datos
+  
+    -   original
+    -   procesados
+
+  - resultados
+    -   tablas
+    -   gráficos
+    
+  - literatura
+
+
+
+
+
+# INTERFACE
+
+```{r,echo=FALSE, out.width="90%",fig.align="center"}
+knitr::include_graphics("interface.jpg") 
+```
+
+
+### Curiosidad por entender como funciona el lenguaje
+
+Por último, al momento de programar uno se puede encontrar con infinidad de errores que suelen tener origen en un uso incorrecto de las funciones. Para ello, es necesario informarse acerca del tipo de *input* que requiere cada función y el tipo de *output* que arroja. Para ello, se puede revisar la documentación que suele venir con las funciones de R o también los foros de la comunidad de programadores [StackOverflow](https://stackoverflow.com/) en la que se realizan preguntas puntuales y se vota por la respuesta más eficiente.
+
+::: callout-note
+*"Todo lo que existe en R es un objeto, todo lo que sucede en R es una función".*
+-John Chambers
+:::
+
+
+
 
 
 
@@ -107,7 +277,6 @@ NOta: podemos cambiar según nuestro interés.
 
 https://gorkang.github.io/R_preparacion_visualizacion_datos/trabajo-con-rmarkdown-para-reportes-reproducibles.html
 
-presentarme, que me llamen por mi nombre.
 
 
 Guiarme de esta pagina:
@@ -146,15 +315,7 @@ AL FINAL HACER RESUMEN (SI EL TIEMPO ALCANZA). 5 MIN
 
 
 
-# ¿Qué buscamos con el taller?
 
--   Proyecto final del taller:
-
-    -   Ejemplos...
-
-        -   En Github: [Determinantes del desempleo juvenil en el mundo](https://luccemhu.github.io/) (CAMBIAR EL NOMBRE DE ESTO JOEL)
-
-        -   En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
 
 
 
