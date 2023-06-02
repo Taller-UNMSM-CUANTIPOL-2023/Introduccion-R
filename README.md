@@ -1,2 +1,1 @@
-# luccemhu.github.io
-instalación de R
+# Sesión 2: Introducción al R y Rstudio
