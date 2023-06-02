@@ -1,0 +1,274 @@
+---
+title: "**<b style = 'color : #E34B2A;'>Sesión 2: Introducción al R y Rstudio</b>**"
+subtitle: 'Taller de Investigación: Política Cuantitativa "CUANTIPOL" - UNMSM'
+author: "Asesor: Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
+date: "2023-6-4"
+theme:
+  dark: darkly
+  light: flatly
+toc: true
+always_allow_html: true
+format:
+  html:
+    mainfont: Georgia
+    self-contained: true
+---
+
+```{r,echo=FALSE, out.width="65%",fig.align="center"}
+knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
+# Puedes centrar, aumentar o disminuir el tamaño del gráfico (buscar códigos en internet) 
+```
+
+# ¿Qué es R?
+
++   R es un lenguaje y es un software que permite el análisis estadístico y gráfico.
+
++   Lenguaje porque tiene su propia sintaxis desde la cual escribir las sentencias y comandos
+
++   Es un software porque es al mismo tiempo un programa o entorno integrado con múltiples funcionalidades
+
+
+# Si hay más softwares estadísticos, ¿porqué usamos R?
+
+-   Costo: Software libre
+
+-   Potencia (N° herramientas): Comunidad que crea nuevas herramientas (packages) constantemente.
+
+-   Accesibilidad al usuario: Lenguaje de Programación R (Antes de 1970)
+
+-   Versatilidad: Muchas extensiones: GIS, etc.
+
+# Programando en R
+```{r,echo=FALSE, out.width="65%",fig.align="center"}
+knitr::include_graphics("programando.jpg") 
+```
+
+
+
+## CONFIGURAR RStudio:
+
+Nos dirigirnos al menú superior: "Tools" \> "Global options..." 
+
+  1. "Code" \> "Editing" y marcamos el siguiente cuadro: "Use native pipe operator..."
+  
+  El operador pipe: ctrl + shift + m <- Nuevo: |> , el antiguo:  %>% <- tienes que llamar la libreria: library(magrittr)
+
+
+  2. "Code" \> "Display" y marcamos los siguientes cuadros: "Show line numbers", "Highlight R funtion Calls", "Rainbow parentheses".
+
+  3. "Code" \> "Saving" y cambiamos en "Default text encoding:" a "UTF-8"
+
+
+Luego nos dirigimos: "Tools" \> "Global options..." 
+
+  1. "Appereance" \> y... marcamos lo siguiente en cada opcion
+  
+  - RStudio theme: Modern
+  
+  - Zoom: 175%
+   
+  - Editor font: Lucida Font
+  
+  - Editor font size: 10
+  
+  - Editor theme: Pastel On Dark
+  
+NOta: podemos cambiar según nuestro interés.  
+
+
+# Para mejorar nuestros reportes, tomemos en cuenta la sintaxis de Rmd y de casi todos los demás formatos para realizar estos reportes:
+
+  + **bolding words** <- negrita
+
+  + *italicizing words* <- cursiva
+ 
+  + ~~striking through~~ <- tachando 
+  
+  + ` -> ALT + 96 
+
+
+## Atajos: 
+
+
+## Realizar comentarios: `#` 
+
+```{r}
+# Dentro de los chunks también puedo comentar mis códigos, etc.
+```
+
+
+
+
+
+
+
+
+
+
+https://gorkang.github.io/R_preparacion_visualizacion_datos/trabajo-con-rmarkdown-para-reportes-reproducibles.html
+
+presentarme, que me llamen por mi nombre.
+
+
+Guiarme de esta pagina:
+
+https://crisbonavida-rclass.netlify.app/programa.html
+
+
+HACER UN PEQUEÑO RESUMEN DE LA CLASE PASADA. 5 MIN
+
+RECOMENDACIONES INICIALES: NO ABRUMARSE, ES APRENDER UN LENGUAJE NUEVO, O SEA, NO VA A SER FACIL. PROGRAMA MUY INTUTIVO
+
+CUALQUIERE DUDA, PREGUNTAR POR CHAT O POR PRIVADO O PRENDER EL MICROFONO O ENVIARME UN CORREO AMÍ O A LOS DEMAS ASESORES.
+
+Cómo estudiar: 
+
+# hacer comentarios en el code chunk o tambien en el scrpit. practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD
+
+cómo guardar sus archivos: en carpetas correctamente delimitadas. comprender la sintaxis de R: mayusculas, minusculas, etc.
+
+.
+
+PEDIR MATERIAL A ALE: sobre el pipe vs el metodo tradicional
+
+ENSEÑAR COMO INSTALR GITHUB
+
+COMO INSTALAR R Y R STUDIO, QUARTO
+
+CÓMO FUNCIONAN LAS FUNCIONES EN R
+
+ENSEÑAR LOS ATAJOS MÁS COMUNES
+
+EJEMPLIFICAR CADA CONCEPTO, PANEL DE R
+
+AL FINAL HACER RESUMEN (SI EL TIEMPO ALCANZA). 5 MIN
+
+
+
+
+# ¿Qué buscamos con el taller?
+
+-   Proyecto final del taller:
+
+    -   Ejemplos...
+
+        -   En Github: [Determinantes del desempleo juvenil en el mundo](https://luccemhu.github.io/) (CAMBIAR EL NOMBRE DE ESTO JOEL)
+
+        -   En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
+
+
+
+# ¿Por qué Quarto?
+
+[Ted Laderas](https://laderast.github.io/)
+
+[Quarto/RMarkdown - What’s Different?](https://laderast.github.io/qmd_rmd/#/title-slide)
+
+
+COFIGURAR EL YAML Y QMD:
+
+[How to change your document font in Quarto (HTML & PDF)](https://www.youtube.com/watch?v=yAlhq8yhLsw)
+
+
+
+# Utilizaremos Github
+
+
+CÓMO
+
+
+# UTILIZAREMOS RPUBS
+
+
+
+
+# **0.1 Guardar archivos y settear la base de datos**
+
+# **1. Introducción al R y a base de datos**
+
+Interfaz de Rstudio:
+
+-   **4 paneles (en esentido horario):**
+
+1.  **La consola**
+
+    -   Podemos realizar cálculos y operaciones matemáticas ( podemos hacerlo en este 'qmd' y aparecerá en el 'Console') como una calculadora
+
+```{r}
+1000454656/256
+```
+
+```{r}
+pi
+```
+
+```{r}
+mean(c(1, 2, 3, 4, 5, 6)) # Media de los 6 primeros números naturales
+```
+
+Tambien podemos llamar dataset precargadas en R como...
+
+```{r}
+cars
+
+# chickens
+```
+
+```{r}
+pacman::p_load(tidyverse) # 
+starwars
+```
+
+```{r}
+airquality #Dataset precargado en R
+
+head(airquality)
+```
+
+-   Podemos guardar variables:
+
+```{r}
+x <- c(1, 2, 3, 4, 5, 6) # Numeros del 1 al 6 pueden guardarse en la variable x
+```
+
+```{r}
+datos <- airquality # La tabla de la calidad del aire en una variable llamada 'datos'
+```
+
+-   **¿Qué es una variable?**
+
+    -   Una variable es un espacio en la computadora en el que guardamos un objeto (como una caja con un nombre determinado para guardar cosas).
+
+2.  **El editor**
+
+    -   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
+
+3.  **El entorno de variables**
+
+    -   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
+
+4.  **Las utilidades**
+
+-   **Menú superior**
+
+    -   *Zoom in, Zoom out*
+
+    -   *Cambiar color de Rstudio*
+
+    -   *Etc.*
+
+    -   Vamos a configurar nuestro Rstudio...
+
+Bibliografía:
+
+-   Youtube
+
+- Qlab. Santiago Sotelo y María Pía van Oordt
+
+
+- Coursera
+
+- DATAPOLITICA
+
+CITAR OTROS MÁS
+
