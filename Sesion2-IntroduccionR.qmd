@@ -19,10 +19,20 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 # Puedes centrar, aumentar o disminuir el tamaño del gráfico (buscar códigos en internet) 
 ```
 
-+ Presentarme, que me llamen por mi nombre. RAAAAAAAAAAAAAAAAAAAAA
+*Presentarme, que me llamen por mi nombre. RAAAAAAAAAAAAAAAAAAAAA*
 
 
 # ¿Qué buscamos con el taller?
+============================================================
+- El objetivo de este curso es introducirnos al lenguaje y al uso de R y explorar los usos más comunes y útiles para el análisis de datos.
+
+- No es un curso exhaustivo que abarque todas las múltiples aplicaciones y posibilidades que se puede aprovechar utilizando R.
+
+        -   Vamos a tratar de hablar "todos el mismo idioma" es decir trabajar sobre los fundamentos, y eso les permitirá luego ir expandiendo su bagaje de R hacia los usos que quieran o necesiten darle.
+
+        -   La estrategia entonces será cubrir lo principal y trataremos de motivar y dar un pantallazo de los temas más avanzados o específicos como herramienta inicial que permita luego profundizar la investigación que desarrollen a lo largo del curso.
+
+        -   Además, les trataré de compartir algunos tips o atajos que me hubiesen gustado saber...
 
 -   Proyecto final del taller:
 
@@ -32,20 +42,50 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 
         -   En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
 
-- El objetivo de este curso es introducirnos al lenguaje y al uso de R y explorar los usos más comunes y útiles para el análisis de datos.
 
-- No es un curso exhaustivo que abarque todas las múltiples aplicaciones y posibilidades de emplear R.
 
-        -   Vamos a tratar de hablar "todos el mismo idioma" es decir trabajar sobre los fundamentos, y eso les permitirá luego ir expandiendo su bagaje de R hacia los usos que quieran o necesiten darle.
+*-COMENZAR DESDE AQUI-*
 
-        -   La estrategia entonces será cubrir lo principal y trataremos de motivar y dar un pantallazo de los temas más avanzados o específicos como herramienta inicial que permita luego profundizar la investigación que desarrollen a lo largo del curso.
 
-        -   Además, les trataré de compartir algunos tips o atajos que me hubiesen gustado saber...
+# Configurar el directorio de trabajo
+ 
+- R funciona como un entorno temporal de trabajo, esto quiere decir que el usuario va agregando datos y objetos, pero si los análisis no son guardados se deberán repetir las instrucciones para obtener otra vez el resultado. Por esta razón, es preciso configurar una carpeta predeterminada en nuestro ordenador, donde el programa buscará los archivos a ejecutar y guardará los archivos a conservar con cambios.
 
--COMENZAR DESDE AQUI-
+- Para ver nuestro lugar de trabajo actual escribimos el siguiente comando (escriba el código en la consola, ya que si lo ejecuta desde este Rmd, obtendrá el lugar donde se encuentra este archivo):
+
+```{r}
+getwd()
+
+setwd(C:/Users/User/Documents/GitHub/Sesion-2)
+
+dir()
+```
+
+Si queremos cambiar de directorio de trabajo, nos dirigirnos al menú “Session” > “Set Working Directory”
+> “Choose Directory”. Esto abrirá una ventana emergente, donde buscaremos la carpeta en la cual vamos
+a trabajar, la ubicamos y seleccionamos “Open”. Para verificar el cambio volvemos a digitar la función
+“getwd()” en la consola.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ¿Qué es R?
-
+============================================================
 +   R es un lenguaje y es un software que permite el análisis estadístico y gráfico.
 
     + Lenguaje porque tiene su propia sintaxis desde la cual escribir las sentencias y comandos
@@ -67,24 +107,26 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
     
 -   Potencia (N° herramientas): Comunidad que crea nuevas herramientas (packages) constantemente.
 
-    + Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.
-    + Está especialmente enfocado en tareas de cómputo y análisis estadístico
-
+    
 -   Accesibilidad al usuario: Lenguaje de Programación R (Antes de 1970)
 
+    + Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.
+
+    + Está especialmente enfocado en tareas de cómputo y análisis estadístico
+    
     + R es un lenguaje del tipo "domain-specific language (DSL)" porque sus funciones están pensados para un área de uso o dominio específico. En este caso para el análisis estadístico y gráfico de manera eficiente y sucinta.
     
 -   Versatilidad: Muchas extensiones: GIS, Quarto, etc.
 
     + Es un programa muy versátil que permite utilizar la misma herramienta para una gran variedad de fines y aplicaciones.
 
--   Importante:
-
-    + Ofrece numerosas herramientas para la visualización de datos de alta calidad, así como para la publicación de otros resultados de forma sencilla. R y R Studio proveen la replicabilidad de los análisis mediante scripts.
-
 
 ## ¿Pará qué podemos usar R?
 
+-   Importante:
+
+    + Ofrece numerosas herramientas para la visualización de datos de alta calidad, así como para la publicación de otros resultados de forma sencilla. R y R Studio proveen la replicabilidad de los análisis mediante scripts.
+    
 - R y RStudio tiene una amplia variedad de usos como la limpieza, el preprocesamiento de datos, aplicaciones de Machine Learning, minería de datos y big data.
 
 - Manejo y almacenamiento de datos.
@@ -118,9 +160,126 @@ Python o Stata)
 knitr::include_graphics("programando.jpg") 
 ```
 
-- Ahora sí, comencemos...
+# Repasemos la instalación...
 
-# Configuremos RStudio! **(Voluntarios uwu)+--++--+--
+
+# INTERFACE
+*Básicamente al trabajar en RStudio, estaremos interacturando con estos 4 paneles. Veamos para qué utilizamos cada uno:*
+
+```{r,echo=FALSE, out.width="90%",fig.align="center"}
+knitr::include_graphics("interface.jpg") 
+```
+
+
+-   **4 paneles (en esentido horario):**
+
+1.  **Console (La consola)**
+============================================================
+-     visualizar el output de nuestros códigos
+
+    -   Es la salida de R, el lugar donde visualizamos el output, lo que ocurre al correr el código. A diferencia del script este ouptut se limpia cada vez que abrimos RStudio. Cuando el código corre bien, veremos letras moradas en la consola y cuando hay un error o una advertencia, en color rojo. Además, cualquier código que corramos en el script aparecerá en la consola como una manera de llevar un registro durante la sesión. 
+    
+-     Útil cuando queremos ejecutar porciones de código pequeñas.
+
+    -   podemos ingresar código de R directamente en la consola, pero que a diferencia del script no se guardará como parte de un documento. pero es útil cuando queremos ejecutar porciones de código pequeñas o realizar operaciones matemáticas (R es como una calculadora…pro).
+
+-     Podemos realizar cálculos y operaciones matemáticas como una calculadora avanzada.
+
+
+*Correr esto en el Console:*
+
+1.
+```{r}
+mean(c(1, 2, 3, 4, 5, 6))
+```
+
+2.
+```{r}
+names(starwars) # Nombre de las variables
+str(starwars) # Estructura de las variables
+```
+3.
+```{r}
+1000454656/256
+pi
+```
+
+
+2.  ** Script (El editor)**
+============================================================
+-   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
+    
+    -   Se encuentran los archivos o scripts (usualmente extensión .R y .Rmd) en los cuales podemos escribir código que queremos preservar o revisar más adelante. Si hacemos la analogía con Office Word, en el panel 1 estaría el documento en blanco a editar.
+    
+    Es nuestro cuaderno, nuestro block de notas. Allí escribimos las líneas de códigos de nuestro proyecto y una vez que lo guardemos podremos volver a retomar desde donde dejamos. Desde el script podremos correr estos códigos directamente. Para comenzar un script vamos a File --> New File --> R Script. Para abrir un script guardado vamos a File --> Open File
+
+
+Tambien podemos llamar dataset precargadas en R como...
+
+```{r}
+cars
+
+# chickens
+```
+
+```{r}
+pacman::p_load(tidyverse) # 
+starwars
+```
+
+```{r}
+airquality #Dataset precargado en R
+
+head(airquality)
+```
+
+3.  ** Environment (El entorno de variables)**
+============================================================
+-   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
+     
+    -   podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-2+2 te aparecerá en tu Environment un vector numérico de valor 4, este vector se ha denominado a.
+     Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de alacena que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos. Esa alacena se vacía con cada nueva sesión de RStudio.
+    
+```{r}
+x <- mean(c(1, 2, 3, 4, 5, 6)) # Numeros del 1 al 6 pueden guardarse en la variable x
+```
+
+```{r}
+datos <- airquality # La tabla de la calidad del aire en una variable llamada 'datos'
+```
+
+-   **¿Qué es una variable?**
+
+    -   Una variable es un espacio en la computadora en el que guardamos un objeto (como una caja con un nombre determinado para guardar cosas).
+    
+    
+
+4.  **Panel de Visualización**
+============================================================
+
+- Se encuentran los archivos del usuario como si fuera la carpeta de “Mis Documentos”
+en Windows. De esta manera podemos acceder fácilmente a archivos de nuestra
+computadora y de nuestro directorio de trabajo.
+
+nos permite interactuar de forma fácil con los subdirectorios (pestaña Files), visualizar los gráficos que creamos (pestaña Plots), cargar y buscar paquetes manualmente (pestaña Packages), acceder al help de cada función (pestaña Help) y visualizar contenido html (pestaña Viewer). Es una especie de atajo multiuso.
+
+*(Correr el html o pdf)*
+
+
+5. No olvidemos el **Menú superior**...
+
+    -   *Zoom in, Zoom out*
+
+    -   *Cambiar color de Rstudio*
+
+    -   *Entre otros*
+
+
+
+
+- Ahora sí, comencemos...  *Vamos a configurar nuestro Rstudio**...
+
+# Configuremos RStudio! *(Voluntarios uwu)*
 
 + Solo algunos cambios para iniciar...
 
@@ -167,11 +326,13 @@ knitr::include_graphics("programando.jpg")
   
   + `comillas invertidas` <- alt + 9 + 6 <- ``
 
+Para escribir una nueva oración, debemos dejar una linea de código y que no se junte todo en un solo párrafo largo.
+
 ````markdown
-#
+# Título
 
-##
-
+## Subtítulo
+ 
 ###
 ````
 
@@ -180,6 +341,30 @@ knitr::include_graphics("programando.jpg")
 # Dentro de los chunks también puedo comentar mis códigos, etc.
 ```
 
+  
+## PARA ESCONDER WARNING Y MESSAGE EN TODO EL DOCUMENTO HMTL:
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+```{r}
+#chunk básico
+```
+
+```{r, include =FALSE,message=FALSE,warning=FALSE}
+# include --> para que no aparezca nada del chunk (no: códigos, texto, etc.)
+```
+
+```{r, echo =FALSE,message=FALSE,warning=FALSE}
+# echo --> para que no aparezca el código, solo el resultado (conveniente para gráficos, mapas, etc.) 
+```
+  
+  
+  
+  
+  
+  
   
 ## Atajos útiles de teclado, los más importantes...
 
@@ -192,6 +377,7 @@ knitr::include_graphics("programando.jpg")
 
 - **Correr/ejecutar code** <- Alt + enter  
 ```{r}
+library(tidyverse)
 starwars
 ```
 
@@ -240,6 +426,7 @@ cars
   - resultados
     -   tablas
     -   gráficos
+    -   Htmls, Pdfs, etc  
     
   - literatura
 
@@ -247,11 +434,7 @@ cars
 
 
 
-# INTERFACE
 
-```{r,echo=FALSE, out.width="90%",fig.align="center"}
-knitr::include_graphics("interface.jpg") 
-```
 
 
 ### Curiosidad por entender como funciona el lenguaje
@@ -262,6 +445,40 @@ Por último, al momento de programar uno se puede encontrar con infinidad de err
 *"Todo lo que existe en R es un objeto, todo lo que sucede en R es una función".*
 -John Chambers
 :::
+
+
+
+RESUMEN DE LA CLASE:
+
+TENEMOS 4 PANELES IMPORTANTES Y
+Parece que todo la acción es consecuencia de haber corrido un código. Y es así
+
+En la consola veremos el código en azul si corrió bien y debajo el output o salida como consecuencia de la sentencia
+
+Si el código implica definir un objeto (ya veremos que significa esto) ese objeto aparecerá ahora en nuestro entorno de trabajo
+
+Si el código implica generar un gráfico lo veremos en ese caso en el panel de navegación
+
+En el script no pasará nada, ya que allí solo escribimos y llamamos al código al momento de correrlo
+
+
+Bibliografía:
+
+-   Youtube
+
+- Qlab. Santiago Sotelo y María Pía van Oordt
+
+
+- Coursera
+
+- DATAPOLITICA
+
+CITAR OTROS MÁS
+
+
+
+
+
 
 
 
@@ -304,9 +521,11 @@ ENSEÑAR COMO INSTALR GITHUB
 
 COMO INSTALAR R Y R STUDIO, QUARTO
 
-CÓMO FUNCIONAN LAS FUNCIONES EN R
 
-ENSEÑAR LOS ATAJOS MÁS COMUNES
+
+
+
+CÓMO FUNCIONAN LAS FUNCIONES EN R
 
 EJEMPLIFICAR CADA CONCEPTO, PANEL DE R
 
@@ -349,87 +568,66 @@ CÓMO
 
 Interfaz de Rstudio:
 
--   **4 paneles (en esentido horario):**
-
-1.  **La consola**
-
-    -   Podemos realizar cálculos y operaciones matemáticas ( podemos hacerlo en este 'qmd' y aparecerá en el 'Console') como una calculadora
-
-```{r}
-1000454656/256
-```
-
-```{r}
-pi
-```
-
-```{r}
-mean(c(1, 2, 3, 4, 5, 6)) # Media de los 6 primeros números naturales
-```
-
-Tambien podemos llamar dataset precargadas en R como...
-
-```{r}
-cars
-
-# chickens
-```
-
-```{r}
-pacman::p_load(tidyverse) # 
-starwars
-```
-
-```{r}
-airquality #Dataset precargado en R
-
-head(airquality)
-```
-
--   Podemos guardar variables:
-
-```{r}
-x <- c(1, 2, 3, 4, 5, 6) # Numeros del 1 al 6 pueden guardarse en la variable x
-```
-
-```{r}
-datos <- airquality # La tabla de la calidad del aire en una variable llamada 'datos'
-```
-
--   **¿Qué es una variable?**
-
-    -   Una variable es un espacio en la computadora en el que guardamos un objeto (como una caja con un nombre determinado para guardar cosas).
-
-2.  **El editor**
-
-    -   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
-
-3.  **El entorno de variables**
-
-    -   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
-
-4.  **Las utilidades**
-
--   **Menú superior**
-
-    -   *Zoom in, Zoom out*
-
-    -   *Cambiar color de Rstudio*
-
-    -   *Etc.*
-
-    -   Vamos a configurar nuestro Rstudio...
-
-Bibliografía:
-
--   Youtube
-
-- Qlab. Santiago Sotelo y María Pía van Oordt
 
 
-- Coursera
+Referencias:
 
-- DATAPOLITICA
+- Wickham, H., y Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.” [First Edition](https://r4ds.had.co.nz/) [Second Edition](https://r4ds.hadley.nz/)
 
-CITAR OTROS MÁS
+- [Hanck, C., Arnold, M., Gerber, A., y Schmelzer, M. (2019). Introduction to Econometrics with R. University of Duisburg-Essen, 1-9.](https://www.econometrics-with-r.org/)
+
+- [Bosco Mendoza Vega (2018). R para principiantes. Libro electrónico. ](https://bookdown.org/jboscomendoza/r-principiantes4/)
+
+- [Tiscornia Pablo - Introducción al procesamiento de datos con R para Ciencias Sociales. Aplicación práctica en la Encuesta Permanente de Hogares (EPH-INDEC).](https://intro-r-eph.netlify.app/bio.html)
+
+- [Weksler, Kozlowski y Shokida. Curso de R para procesamiento de datos de la Encuesta Permanente de Hogares](https://diegokoz.github.io/Curso_R_EPH_clases/)
+
+
+Más recursos:
+
+- [Messy data](https://tidyr.tidyverse.org/)
+
+- [Tidy data](https://tidyr.tidyverse.org/articles/tidy-data.html)
+
+- [The R Graph Gallery](https://r-graph-gallery.com/)
+
+- [R-Ladies Lima](https://www.youtube.com/c/RLadiesLima/videos?app=desktop&view=0&sort=dd&shelf_id=0)
+
+- [Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+- [Data Transformation](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
+
+- [Data Tidyng](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
+
+- [Data Visualization with ggplot2](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf)
+
+- [Stringr](https://posit.co/wp-content/uploads/2022/10/strings-1.pdf)
+
+- [RStudio-IDE](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf)
+
+- [R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+
+
+
+
+## PARA DUDAS FRECUENTES:
+https://www.odiolaestadistica.com/estadistica-r/tipos-de-variables/
+
+
+  - Data Política: Manual de R para estadística aplicada al análisis político:
+https://christianchiroquer.github.io/ManualdeR/r-un-lenguaje-de-programaci%C3%B3n.html
+
+Chiroque, Christian (2020) Data Política: Manual R para estadística aplicada al análisis político. Data Política: Lima. Link
+
+## MÁS TIPS PARA EMBELLECER la apariencia de mis resultados html:  
+https://holtzy.github.io/Pimp-my-rmd/
+
+
+## PARA OTROS TIPS:
+https://www.yan-holtz.com/blog.html
+
+
+
+
 
