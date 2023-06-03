@@ -23,6 +23,8 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 
 *RECOMENDACIONES INICIALES: SÉ QUE PUEDE SER ABRUMADOR porque ES APRENDER UN LENGUAJE NUEVO, O SEA, NO VA A SER FACIL. pero el PROGRAMA es MUY INTUTIVO y además yo y mis compañeros y compañeras les vamos a ayudar*
 
+*practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD e intuicion*
+
 *Y CUALQUIER DUDA, PREGUNTEN POR EL CHAT, POR PRIVADO O PRENDAN EL MICROFONO O TAMBIÉN PUEDEN ENVIARME UN CORREO*
 
 *ENTONCES*
@@ -158,18 +160,14 @@ knitr::include_graphics("interface.jpg")
 
 - Podemos realizar cálculos y operaciones matemáticas como una calculadora avanzada.
 
-- Visualizar y registrar el output de nuestros códigos
-
-*La consola es la salida de R,podemos ingresar código de R directamente y podemos obervar lo que ocurra al correr el código. A diferencia del script este ouptut se limpia cada vez que abrimos RStudio, es decir, no se guardará como parte de un documento. además, Cuando el código corre bien, veremos letras moradas en la consola y cuando hay un error o una advertencia, en color rojo.         Además, cualquier código que ejecutemos en el script se mostrará en la consola, lo que nos permite llevar un registro de nuestras acciones hechas en el script durante la sesión, a menos que lo borremos con la escoba de aquí xd* 
-
-*Correr esto en el Console:*
-
-1. *Aprovechemos que hay datasets precargados en R*
+*Aprovechemos que hay datasets precargados en R*
 ```{r}
-cars 
+#cars
+head(cars)
+names(cars) # Nombre de las variables
+#table(cars)
+str(cars) # Estructura de las variables
 ```
-
-
 
 ```{r}
 1000454656/256 # Dividir grandes números
@@ -181,54 +179,43 @@ pi # Obtener el valor de pi
 mean(c(1, 2, 3, 4, 5, 6)) # Media de los primeros 6 números naturales
 ```
 
-2.
+*hasta aquí no ma papi*
 ```{r}
-#names(starwars) # Nombre de las variables
-#str(starwars) # Estructura de las variables
-```
-3.
-
-
-Tambien podemos llamar dataset precargadas en R como...
-
-```{r}
-cars
-
-# chickens
-```
-
-```{r}
+airquality 
 library(tidyverse)  
 starwars
 ```
 
-```{r}
-airquality 
-head(airquality)
-```
+- Visualizar y registrar el output de nuestros códigos
 
-2.  ** Script (El editor)**
-============================================================
--   Panel en el que nos encontramos ahora. Aquí se crean y modifican scripts, entre otros tipos de archivos...
+*La consola es la salida de R,podemos ingresar código de R directamente y podemos obervar lo que ocurra al correr el código. A diferencia del script este ouptut se limpia cada vez que abrimos RStudio, es decir, no se guardará como parte de un documento. además, Cuando el código corre bien, veremos letras moradas en la consola y cuando hay un error o una advertencia, en color rojo.         Además, cualquier código que ejecutemos en el script se mostrará en la consola, lo que nos permite llevar un registro de nuestras acciones hechas en el script durante la sesión, a menos que lo borremos con la escoba de aquí xd* 
+
+**2. Script (El editor)**
+
+- Panel en el que se crean y modifican scripts, entre otros tipos de archivos...
+
+*es nuestro cuaderno o bloc de notas digital en el que escribimos las líneas de código de nuestro proyecto y Una vez que guardemos el código, podemos preservar o retomar desde donde lo dejamos en futuras sesiones. Usualmente Se encuentran los archivos o scripts de extensión .R y .Rmd. Si hacemos el símil con Word, en este panel estaría el documento en blanco a editar.*
     
-    -   Se encuentran los archivos o scripts (usualmente extensión .R y .Rmd) en los cuales podemos escribir código que queremos preservar o revisar más adelante. Si hacemos la analogía con Office Word, en el panel 1 estaría el documento en blanco a editar.
-    
-    Es nuestro cuaderno, nuestro block de notas. Allí escribimos las líneas de códigos de nuestro proyecto y una vez que lo guardemos podremos volver a retomar desde donde dejamos. Desde el script podremos correr estos códigos directamente. Para comenzar un script vamos a File --> New File --> R Script. Para abrir un script guardado vamos a File --> Open File
-
-- Más sobre los tipos de archivos: 
-
-  - [📑Script, R Markdown y R Notebook 📓: Principales diferencias](https://www.youtube.com/watch?v=y7JPGlw6dJg)
+- Diferencias sobre este tipo de archivos: [Script, R Markdown y R Notebook](https://www.youtube.com/watch?v=y7JPGlw6dJg)
   
-  - [Como crear un pdf en R Markdown sin instalar LaTeX](https://www.youtube.com/watch?v=vyqCebNkreI)
+**3. Environment (El entorno de variables)**
 
-
-3.  **Environment (El entorno de variables)**
-============================================================
 -   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
      
-    -   podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-2+2 te aparecerá en tu Environment un vector numérico de valor 4, este vector se ha denominado a.
-     Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de alacena que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos. Esa alacena se vacía con cada nueva sesión de RStudio.
+*podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-2+2 te aparecerá en tu Environment un vector numérico de valor 4, este vector se ha denominado a.*
+
+*Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de alacena que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos. Esa alacena se vacía con cada nueva sesión de RStudio.*
     
+    ```{r}
+valor_1 <- 5
+
+valor_2 <- 5*5
+```
+
+```{r}
+print("Hola mundo")
+```
+
 ```{r}
 x <- mean(c(1, 2, 3, 4, 5, 6)) # Numeros del 1 al 6 pueden guardarse en la variable x
 ```
@@ -620,6 +607,8 @@ Si el código implica generar un gráfico lo veremos en ese caso en el panel de 
 
 En el script no pasará nada, ya que allí solo escribimos y llamamos al código al momento de correrlo
 
+
+es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
 
 
 **Referencias**:
