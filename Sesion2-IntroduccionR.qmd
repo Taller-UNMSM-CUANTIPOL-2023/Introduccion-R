@@ -15,7 +15,7 @@ format:
 ---
 
 ```{r,echo=FALSE, out.width="65%",fig.align="center"}
-knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
+knitr::include_graphics("./images/logoCUANTIPOL.jpg")  # Para plotear cualquier imagen
 # Puedes centrar, aumentar o disminuir el tamaño del gráfico (buscar códigos en internet) 
 ```
 
@@ -40,7 +40,7 @@ knitr::include_graphics("logoCUANTIPOL.png")  # Para plotear cualquier imagen
 
 *La estrategia consistirá en abordar los conceptos principales y proporcionar una visión general de temas más avanzados o específicos como punto de partida, que les permita profundizar la investigación que desarrollen a lo largo del curso.*
 
-*Además, les compartiré algunos consejos prácticos y atajos que hubiera deseado conocer cuando comencé con R, y que espero les resulten muy útiles y beneficiosos.*
+*Además, les compartiré algunos consejos prácticos y atajos que hubiera deseado conocer cuando comencé con R, y que espero les resulten muy útiles y beneficiosos.* *O sea, en la internet hay un monton de informacion sobre R, introducciones, Rmd, R, etc*
 
 *El siguiente objetivo del taller es su*
 
@@ -149,16 +149,16 @@ Pero si hay más softwares estadísticos, ¿por qué usamos (o deberíamos usar)
 - **4 paneles (en esentido horario):**
 
 ```{r, echo = FALSE, out.width = "115%", fig.align = "center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
-knitr::include_graphics("interface.jpg") 
+knitr::include_graphics("./images/interface.jpg") 
 ```
 
 **1. Console (La consola)**
 
-- Útil cuando queremos ejecutar porciones de código pequeñas.
+- Útil cuando queremos ejecutar porciones de código pequeñas
 
 *o realizar operaciones matemáticas, o sea, R es como una calculadora avanzada)*
 
-- Podemos realizar cálculos y operaciones matemáticas como una calculadora avanzada.
+- Realizar cálculos y operaciones matemáticas como una calculadora avanzada
 
 *Aprovechemos que hay datasets precargados en R*
 ```{r}
@@ -194,28 +194,24 @@ starwars
 
 - Panel en el que se crean y modifican scripts, entre otros tipos de archivos...
 
+  - Por ejemplo, para crear un script de extensión .R: vamos a File \> New File \> R Script. 
+
+  - Para abrir un script guardado en la computadora, vamos a File \> Open File
+
 *es nuestro cuaderno o bloc de notas digital en el que escribimos las líneas de código de nuestro proyecto y Una vez que guardemos el código, podemos preservar o retomar desde donde lo dejamos en futuras sesiones. Usualmente Se encuentran los archivos o scripts de extensión .R y .Rmd. Si hacemos el símil con Word, en este panel estaría el documento en blanco a editar.*
     
 - Diferencias sobre este tipo de archivos: [Script, R Markdown y R Notebook](https://www.youtube.com/watch?v=y7JPGlw6dJg)
   
 **3. Environment (El entorno de variables)**
 
--   Advertimos los objetos creados, pero tambien dataframes, tibbles, listas, entre otros.
+-   Advertimos los objetos creados, pero también dataframes, tibbles, listas, entre otros.
      
-*podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-2+2 te aparecerá en tu Environment un vector numérico de valor 4, este vector se ha denominado a.*
-
-*Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de alacena que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos. Esa alacena se vacía con cada nueva sesión de RStudio.*
-    
-    ```{r}
-valor_1 <- 5
-
-valor_2 <- 5*5
-```
-
+*podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-9+2 te aparecerá en tu Environment un vector numérico de valor 9 y 18 este vector se ha denominado a.*
 ```{r}
-print("Hola mundo")
+value <- 9+2
 ```
-
+*Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de almacén que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos*
+    
 ```{r}
 x <- mean(c(1, 2, 3, 4, 5, 6)) # Numeros del 1 al 6 pueden guardarse en la variable x
 ```
@@ -227,117 +223,131 @@ datos <- airquality # La tabla de la calidad del aire en una variable llamada 'd
 -   **¿Qué es una variable?**
 
     -   Una variable es un espacio en la computadora en el que guardamos un objeto (como una caja con un nombre determinado para guardar cosas).
-    
-    
 
 4. **Panel de Visualización**
 ============================================================
 
 - Se encuentran los archivos del usuario como si fuera la carpeta de “Mis Documentos” en Windows. De esta manera podemos acceder fácilmente a archivos de nuestra computadora y de nuestro directorio de trabajo.
 
-nos permite interactuar de forma fácil con los subdirectorios (pestaña Files), visualizar los gráficos que creamos (pestaña Plots), cargar y buscar paquetes manualmente (pestaña Packages), acceder al help de cada función (pestaña Help) y visualizar contenido html (pestaña Viewer). Es una especie de atajo multiuso.
+*Nos permite interactuar de forma fácil con los subdirectorios (pestaña Files)*
 
-*(Correr el html o pdf)*
+*visualizar los gráficos que creamos (pestaña Plots)*
+*Correr en el Console para que aparezca en el 4to panel:*
+```{r}
+boxplot(airquality)
+```
+*cargar y buscar paquetes manualmente (pestaña Packages)*
+*Para instalar algun paquete, debemos digitar este comando, pero también podemos hacerlo desde*
+```{r}
+#install.packages("tinytex")
+```
 
+*acceder al help de cada función (pestaña Help)*
+```{r}
+#?cars
+```
 
-5. No olvidemos el **Menú superior**...
+*y visualizar contenido html (pestaña Viewer). Es una especie de atajo multiuso*
+*Correr el html del script en el que se trabaja*
 
-    -   *Zoom in, Zoom out*
+No olvidemos el... 
 
-    -   *Cambiar color de Rstudio*
+**5. Menú superior**
 
-    -   *Entre otros*
+    - File
+    
+    - View: Zoom in, Zoom out
 
+    - Session
+    
+    - Tools
 
+    - Entre otros
 
+- Ahora sí, comencemos...  Vamos a configurar nuestro Rstudio
 
-- Ahora sí, comencemos...  *Vamos a configurar nuestro Rstudio**...
+Configuremos RStudio! *(Voluntarios)*
+============================================================
 
-# Configuremos RStudio! *(Voluntarios uwu)*
+Solo algunos cambios para iniciar...
 
-+ Solo algunos cambios para iniciar...
+- 1) Nos dirigimos al menú superior: "Tools" \> "Global options..." \> "Code"...
 
-+ Nos dirigirnos al menú superior: "Tools" \> "Global options..." 
-
-  1. "Code" \> "Editing" y marcamos el siguiente cuadro: "Use native pipe operator..."
-  
-  El operador pipe: ctrl + shift + m <- Nuevo: |> , el antiguo:  %>% <- tienes que llamar la libreria: library(magrittr)
-
-
-  2. "Code" \> "Display" y marcamos los siguientes cuadros: "Show line numbers", "Highlight R funtion Calls", "Rainbow parentheses".
-
-  3. "Code" \> "Saving" y cambiamos en "Default text encoding:" a "UTF-8"
-
-
-+ Luego nos dirigimos: "Tools" \> "Global options..." 
-
-  1. "Appereance" \> y... marcamos lo siguiente en cada opción
-  
-  - RStudio theme: Modern
-  
-  - Zoom: 175%
+    \> "Display" \> y marcamos lo siguiente: 
+    
+    -   "Show line numbers"
+    
+    -   "Highlight R funtion Calls"
    
-  - Editor font: Lucida Font
-  
-  - Editor font size: 10
-  
-  - Editor theme: Pastel On Dark
-  
+    -   "Rainbow parentheses"
+
+    \> "Saving" y cambiamos en "Default text encoding:" a "UTF-8"
+
+- 2) Luego nos dirigimos: "Tools" \> "Global options..."
+
+    \> "Appereance" \> y marcamos lo siguiente:
+
+    -   RStudio theme: Modern
+
+    -   Zoom: 175%
+
+    -   Editor font: Lucida Font
+
+    -   Editor font size: 10
+
+    -   Editor theme: Pastel On Dark
+
 **Ojo: podemos realizar estos cambios y otros según nuestra curiosidad o interés.**  
 
-
-
-
-# Programando en R
+Programando en R
+============================================================
 ```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
-knitr::include_graphics("programando.jpg") 
+knitr::include_graphics("./images/programando.jpg") 
 ```
 
 
-Pero también es importante los reportes:
+Pero también es importante mejorar nuestros reportes...
+============================================================
 
-# Para mejorar nuestros reportes, tomemos en cuenta la sintaxis de Rmd y de casi todos los demás formatos para realizar estos reportes:
+- Tomemos en cuenta la siguiente sintaxis de Rmd:
 
-  + **bolding words** <- negrita
+  - **bolding words** <- negrita
 
-  + *italicizing words* <- cursiva
- 
-  + ~~striking through~~ <- tachando 
+  - *italicizing words* <- cursiva
 
-+ Puedes combinar las anteriores: ***Cuantipol***
-  
-  + 'comilla simple' <- alt + 3 + 9 <- ''
-  
-  + `comillas invertidas` <- alt + 9 + 6 <- ``
+  - ~~striking through~~ <- tachando
 
-Para escribir una nueva oración, debemos dejar una linea de código y que no se junte todo en un solo párrafo largo.
+    - Puedes combinar las anteriores: ***Cuantipol***
 
-````markdown
+  - 'comillas simples' <- alt + 3 + 9 <- ''
+
+  - `comillas invertidas` <- alt + 9 + 6 <- ``
+
+  - Para escribir una nueva oración, debemos dejar una linea de código para que no se junte todo en un solo párrafo.
+
+```markdown
 # Título
 
 ## Subtítulo
  
 ###
-````
-
-Cómo estudiar: 
-
-- Realizar comentarios para los comandos que se van a explicar a lo largo del curso: #
-```{r}
-# Dentro de los chunks también puedo comentar mis códigos, etc.
 ```
 
-*hacer comentarios en el code chunk o tambien en el scrpit. practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD*
+  - Realizar comentarios de los comandos en el code chunk o en el script con la almohadilla o el numeral: #
 
-es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
+    - Por ejemplo: Importemos los nombres del dataset starwars:
+```{r,message=FALSE}
+library(tidyverse)  # Necesario para llamar al dataset
+names(starwars) # Sin este numeral, no se podría ejecutar los códigos en este code chunk
+```
 
-Como se mencionó anteriormente, programar de manera ordenada no solo es beneficioso para nuestros colegas que revisarán la investigación sino también para nosotros mismos para que en caso revisitemos nuestro código sepamos exactamente para qué servía cada función y con qué intención se había empleado. Es por ello que es de utilidad comentar el código utilizado precisando lo que realiza cada función.
+En ese sentido, para programar de manera ordenada, es de utilidad comentar el código utilizado y proporcionar una explicación precisa de lo que se realiza con cada función. Esto no solo nos ayuda a nosotros mismos a entender claramente el propósito de cada función cuando volvamos a revisar nuestro código, sino que también resulta útil para nuestros colegas que revisarán nuestra investigación.
 
-Es necesario comentar que los lenguajes de programación iniciales tienen una amplia influencia anglosajona. En 1963, se creó el ASCII, el cual es un código de caracteres basado en el alfabeto latino, tal como se usa en el inglés moderno [@mackenzie1980]. Sobre este alfabeto, las primeras computadoras IBM incorporaron el estándar ASCII y por extensión también los lenguajes de programación iniciales por lo que muchas veces nos encontraremos con algunos errores de lectura de caracteres especiales como "ñ", "ó", "ü", entre otras. Por lo que se deben considerar los siguientes puntos al manipular la data:
+Es necesario comentar que los primeros lenguajes de programación tienen una fuerte influencia anglosajona. En 1963, se creó el código ASCII, un conjunto de caracteres basado en el alfabeto latino utilizado en el inglés moderno [(Mackenzie, 1980)](https://archive.org/details/mackenzie-coded-char-sets). En consecuencia, las primeras computadoras IBM adoptaron el estándar ASCII. Esto puede provocar dificultades en la lectura de caracteres especiales como "ñ", "ó" o "ü". Por tanto, al manipular datos, debemos considerar lo siguiente:
 
--   Guardar los objetos con nombres cortos, auto-descriptivos, sin espacios, y sin caracteres especiales. Del mismo modo con las variables dentro de los objetos.
+-   Guardar los objetos con nombres cortos, autodescriptivos, sin espacios y sin caracteres especiales. Del mismo modo con las variables dentro de los objetos.
 
--   Revisar en la exportación de la data si los nombres de los objetos y las variables dentro de estas se han exportado exitosamente o ha habido problemas de *encoding*. Por ejemplo, si exportamos a formato `.dta` y tenemos variables con los siguientes nombres podrían aparecer de la siguiente manera:
+-   Al exportar los datos, verificar si los nombres de los objetos y las variables dentro de ellos se han exportado correctamente, sin problemas de codificación ("*encoding*"). Por ejemplo,  al exportar a formato `.dta`, los nombres de las variables podrían aparecer de la siguiente manera:
 
     | variable   | variable en `.dta` | Correcto nombre de variable |
     |------------|--------------------|-----------------------------|
@@ -345,29 +355,53 @@ Es necesario comentar que los lenguajes de programación iniciales tienen una am
     | educación  | educaci?n          | edu                         |
     | antigüedad | antig?edad         | antiguedad                  |
 
+Consideremos otros consejos respecto a los code chunk:
+============================================================
 
-## PARA ESCONDER WARNING Y MESSAGE EN TODO EL DOCUMENTO HMTL:
-```{r, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-```
-
+Nota: para advertir los cambios, es necesario comparar el script y el informe.
 
 ```{r}
-#chunk básico
+# Code chunk básico
 ```
+
+- Código para no mostrar las advertencias y mensajes para todo nuestro reporte:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+
+```
+
+- Lo anterior, pero solo para un code chunk:
+
+  - Ojo: include = FALSE <- No muestra el código ni su resultado ni texto, etc., en el reporte. 
 
 ```{r, include =FALSE,message=FALSE,warning=FALSE}
-# include --> para que no aparezca nada del chunk (no: códigos, texto, etc.)
+
 ```
+
+- Si solo queremos visualizar el resultado, pero no el código:
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
-# echo --> para que no aparezca el código, solo el resultado (conveniente para gráficos, mapas, etc.) 
+# echo = FALSE <- No muestra el código, pero sí su resultado
+# (conveniente para gráficos, mapas, etc.) 
+# Por ejemplo:
+plot(cars)
+```
+
+- Para mostrar el código, los gráficos, etc., pero no el resultado de su función:
+  
+  - results=FALSE
+```{r, results =FALSE,message=FALSE,warning=FALSE}
+# Por ejemplo:
+library(scatterplot3d)
+(f <- scatterplot3d(airquality[,c('Ozone', 'Wind', 'Month')]))
 ```
   
   
-## Atajos útiles de teclado, los más importantes...
+Atajos útiles de teclado, los más importantes...
+============================================================
 
-- Podemos ver todos los atajos en el **Panel de atajos**: tools \> Keyboard Shortcuts Help <- alt + shift + k
+Podemos ver todos los atajos en el **Panel de atajos**: tools \> Keyboard Shortcuts Help <- alt + shift + k
 
 - **Crear code chunk**  <- Ctrl + alt + i 
 ```{r}
@@ -380,65 +414,57 @@ library(tidyverse)
 starwars
 ```
 
-- **Ejecutar linea de código** <- ctrl + enter
-```{r}
-starwars
-cars
-```
+- **Guardar avance** <- Ctrl + S
 
-- **Guardar avance** <- ctrl + s 
+- Ejecutar linea de código <- Ctrl + Enter
 
-- Knitear/renderizar a pdf/hml/etc <- Ctrl + shift + k
+- Knitear/renderizar a pdf/hml/etc <- Ctrl + Shift + k
 
-- Dar formato ordenado al código <- ctrl + A
+- Dar formato ordenado al código <- Ctrl + A
 
-- Para comentar múltiples líneas de código: agrega el numeral al lado izquierdo en cada linea de codigo <- ctrl/cmd + shift + c
+- Para comentar múltiples líneas de código en un chunk: agrega el numeral al lado izquierdo en cada línea de código <- Ctrl/cmd + Shift + C
 
-- Para buscar y reemplazar varias palabras <- ctrl + F
+- Para buscar y reemplazar varias palabras <- Ctrl + F
 
-- Reiniciar Rstudio <- ctrl + shift + f10 
+- Reiniciar Rstudio <- Ctrl + shift + f10
 
-- Insertar 'pipe' <- ctrl + shift + m <- `|>` 
-  
-- Operador de asignación <- alt + - (guion) o también podemos usar: <- 
+- Insertar 'pipe' <- Ctrl + shift + m <- `|>` o el pipe antiguo: %>%
 
-- Arrastrar línea de código <- alt + up o alt + down
+- Operador de asignación <- Alt + - (guion) o también podemos usar: <-
 
-- Para desplazarnos en cada pestaña de los scripts/códigos <- ctrl + alt + (flechas: izquierda o derecha)
-  
-- Para insertar/crear secciones (títulos) <- ctrl/cmd + shift + R
-  
+- Arrastrar línea de código <- Alt + up o Alt + down
 
-# Algo más: Organización de carpetas
+- Para desplazarnos en cada pestaña de los scripts <- Ctrl + Alt + (flechas: izquierda o derecha)
 
-+ Es importante conservar un orden para realizar análisis de datos o una investigación. Se sugiere la siguiente estructura:
+- Para insertar/crear secciones (títulos) <- Ctrl/cmd + shift + R
 
-+ Nombre de la carpeta principal
+Algo más: Organización de carpetas
+============================================================
 
-  - códigos
-  
-  - datos
-  
-    -   original
-    -   procesados
+Es importante conservar un orden para realizar análisis de datos o una investigación. Se sugiere la siguiente estructura:
 
-  - resultados
-    -   tablas
-    -   gráficos
-    -   Htmls, Pdfs, etc  
-    
-  - literatura
+-   Nombre de la carpeta principal
 
+    -   códigos
 
-- Se puede revisar la documentación que suele venir con las funciones de R o también los foros de la comunidad de programadores [StackOverflow](https://stackoverflow.com/) en la que se realizan preguntas puntuales y se vota por la respuesta más eficiente.
+    -   datos
 
+        -   original
+        -   procesados
 
+    -   resultados
+
+        -   tablas
+        -   gráficos
+        -   Htmls, Pdfs, etc
+
+    -   literatura
+
+Les exhoro revisar los foros de la comunidad de programadores como [StackOverflow](https://stackoverflow.com/) en la que se realizan y absuelven dudas frecuentes o especificas.
 
 *Ahora sí ya estamos listos para meternos de lleno en los conceptos principales de R e ir, en simultaneo, corriendo y probando cada aplicación que vayamos viendo. Esta será la dinámica propuesta para el aprendizaje.*
 
 *Comenzaremos por los elementos fundamentales, para construir desde lo más básico de manera aditiva y progresiva.*
-
-Ahora sí se viene lo chido...
 
 
 
