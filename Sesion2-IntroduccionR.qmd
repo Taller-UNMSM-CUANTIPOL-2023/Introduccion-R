@@ -76,12 +76,13 @@ dir() # Ver qué archivos están en el directorio de trabajo o en el lugar en qu
 
   - Nos dirigirnos al menú superior y seleccionamos las siguientes pestañas: “Session” \> “Set Working Directory” \> “Choose Directory”. Esto abrirá una ventana emergente, en la que podemos buscar la carpeta en la cual deseamos trabajar. Una vez ubicada, la seleccionamos y hacemos clic en "Open". Para verificar el cambio, volvemos a ejecutar la función `getwd()` en la consola.
 
-- Si necesitamos importar, por ejemplo, una base de datos desde otra subcarpeta:
+- Si necesitamos importar, por ejemplo, una base de datos desde otra subcarpeta (dfs, en este caso):
 
 ````markdown
 library(rio) # Convocamos el paquete
-data = import("./pavimentandoconvotos.sav") 
-# ./ El punto + slash indica que importaremos la base de una subcarpeta 
+data = import("./dfs/pavimentandoconvotos.sav") 
+# './' El punto + el slash indican que importaremos 
+# la base de una subcarpeta llamada 'dfs' 
 ````
 
 - Luego aprenderán otros modos para importar bases de datos directamente desde internet. 
@@ -198,13 +199,13 @@ starwars
 
   - Para abrir un script guardado en la computadora, vamos a File \> Open File
 
-*es nuestro cuaderno o bloc de notas digital en el que escribimos las líneas de código de nuestro proyecto y Una vez que guardemos el código, podemos preservar o retomar desde donde lo dejamos en futuras sesiones. Usualmente Se encuentran los archivos o scripts de extensión .R y .Rmd. Si hacemos el símil con Word, en este panel estaría el documento en blanco a editar.*
+*es nuestro cuaderno o bloc de notas digital en el que escribimos las líneas de código de nuestro proyecto y Una vez que guardemos el código, podemos preservar o retomar desde donde lo dejamos en futuras sesiones.*
 
-*R es muy fuerte en el apoyo a este enfoque narrativo computacional para el análisis, y lo hace a través de archivos R Markdown que generalmente terminan en .Rmd como este. Estos archivos se pueden convertir a formatos de lectura más típicos como PDFs, archivos HTML o incluso documentos de Word a través del proceso de “knitting (tejer)” dentro de RStudio.*
+*R es muy fuerte en el apoyo a este enfoque narrativo computacional para el análisis, y lo hace a través de archivos o scripts de extensión .R y .Rmd como este. Estos archivos se pueden convertir a formatos de lectura más típicos como PDFs, archivos HTML o incluso documentos de Word a través del proceso de “knitting (tejer)” dentro de RStudio. Si hacemos el símil con Word, en este panel estaría el documento en blanco a editar.*
 
-### Knit en R Studio
+### knitting en RStudio
     
-Vamos a trabajar en archivos con extension Rmarkdown (Rmd), pero para presentarlos de una manera amigable, podemos exportarlos en formato PDF, Html o en una página web.
+Vamos a trabajar en archivos con extension Rmarkdown (Rmd) y otros, pero para presentarlos de una manera amigable, podemos exportarlos en formato PDF, Html o en una página web.
 
 - Para Html, seleccionamos en el menú Knit \> Knit to html
 
@@ -214,50 +215,30 @@ Vamos a trabajar en archivos con extension Rmarkdown (Rmd), pero para presentarl
 
   - tinytex::install_tinytex()
 
-#### Asimismo, para un Knit a una página web, utilizaremos Rpubs, por lo que deberán crearse una cuenta: https://rpubs.com/users/new
+- Asimismo, para un Knit a una página web, utilizaremos [Rpubs](https://rpubs.com/users/new), por lo que deberán crearse una cuenta. 
 
-Recomendación: Cuando creen sus archivos Rmd, que estos no contengan en su nombre caracteres como tildes, símbolos, etc., eso no les permitirá realizar un knit en la web.    
+   - Recomendación: Cuando creen sus archivos Rmd, que estos no contengan en su nombre caracteres como tildes, símbolos, etc., eso no les permitirá realizar un knit en la web.    
     
 - Diferencias sobre este tipo de archivos: [Script, R Markdown y R Notebook](https://www.youtube.com/watch?v=y7JPGlw6dJg)
 
 - Puedes revisar este Rpubs de [Gustavo Martínez Valdes para mejorar tu YAML](https://rpubs.com/gustavomtzv/874870):
 
-  - YAML (Yet Another Markdown Language): Allí se configuran las características generales que se arrojarán en el documento de salida o output, una vez que el documento en formato Markdown haya sido renderizado (con el comando knitr()).
+    - YAML (Yet Another Markdown Language): Allí se configuran las características generales que se arrojarán en el documento de salida o output, una vez que el documento en formato Markdown haya sido renderizado (con el comando `knitr()`).
   
-#### Github
+- **Github**
 
-Vamos a requerir que se creen una cuenta en GitHub. GitHub permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas de ordenador. Para fines de este curso, vamos a utilizar Github como repositorio para cargar nuestras bases de datos, administrar nuestros archivos etc.
+Vamos a requerir que se creen una cuenta en GitHub. Esta plataforma permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas de ordenador. Para fines de este curso, vamos a utilizar Github como repositorio para cargar nuestras bases de datos, administrar nuestros archivos etc.
 
-Créese una cuenta en Github:
+  - [Clic aqui para crearse una cuenta en Github](https://github.com/).
 
-  - Ingrese a esta dirección: https://github.com/
+- Github como repositorio:
 
-Si quiere saber más de GitHub visite: https://www.youtube.com/watch?v=Uw8SIaAK-vw&t=134s
+    - En la parte superior derecha seleccione “+”, seleccione “New repository” y siga los pasos precisando el nombre del respositorio, descripción (opcional), elija la visibilidad del repositorio (publico o privado) y cree su repositorio.
 
-Github como repositorio:
+    - Cargue archivos seleccionando Add file > Upload files > Choose your files > Commit changes
 
-  - En la parte superior derecha seleccione “+”, seleccione “New repository” y siga los pasos precisando el nombre del respositorio, descripción (opcional),elija la visibilidad del repositorio (publico o privado), y ¡cree su repositorio!
+[Clic aqui si quiere profundizar más sobre el GitHub como repositorio](https://www.youtube.com/watch?v=UISDyE9KMlI)
 
-  - Cargue archivos seleccionando Add file > Upload files > Choose your files > Commit changes
-
-Si quiere profundizar más sobre el GitHub como repositorio: https://www.youtube.com/watch?v=JN6rzv4zSJ4s
-  
-  
-## GIT HUB:
-
-GITHUB DESKTOP DE ESCRITORIO: ¿COMO USAR? CREAR REPOSITORIOS, COMMIT Y PULL | LO BÁSICO: https://www.youtube.com/watch?v=UISDyE9KMlI
-
-GitHub README Profile: https://www.youtube.com/watch?v=HD4cnRuSGN0  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 **3. Environment (El entorno de variables)**
 
 -   Advertimos los objetos creados, pero también dataframes, tibbles, listas, entre otros.
@@ -359,13 +340,6 @@ Solo algunos cambios para iniciar...
 
 **Ojo: podemos realizar estos cambios y otros según nuestra curiosidad o interés.**  
 
-Programando en R
-============================================================
-```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
-knitr::include_graphics("./images/programando.jpg") 
-```
-
-
 Pero también es importante mejorar nuestros reportes...
 ============================================================
 
@@ -396,6 +370,7 @@ Pero también es importante mejorar nuestros reportes...
   - Realizar comentarios de los comandos en el code chunk o en el script con la almohadilla o el numeral: #
 
     - Por ejemplo: Importemos los nombres del dataset starwars:
+    
 ```{r,message=FALSE}
 library(tidyverse)  # Necesario para llamar al dataset
 names(starwars) # Sin este numeral, no se podría ejecutar los códigos en este code chunk
@@ -660,7 +635,7 @@ c(9*5, "mes")
 
 *Ahora pasemos a los objetos en R*
 
-### Objetos
+### **Objetos**
 
 - Notar que ninguno de los valores ni vectores anteriores fueron almacenados en un objeto. Si quisiera llamarlos, ¿cómo haría?
 
@@ -686,14 +661,15 @@ En el ejemplo anterior, he creado un objeto `a` y luego he llamado ese objeto me
 b
 ```
 
-*Si ejecuta el código, verá que el panel Environment (Entorno) en la mano derecha de RStudio ahora tiene tres variables, una para ‘a’ y otra para b. y el último objeto que creé h*
+*notemos qie Si ejecutamos el código, verán que en el panel Environment (Entorno) en la mano derecha de RStudio ahora tiene estas variables, una para ‘a’ y otra para b.*
+
+
+El objeto `a` y `b` son vectores numéricos por lo que puedo realizar operaciones entre ellos. En primera instancia puedo sumarlos entre ellos y/o con otros números:
 
 ```{r}
 h <- a+b
 h
 ```
-
-El objeto `a` y `b` son vectores numéricos por lo que puedo realizar operaciones entre ellos. En primera instancia puedo sumarlos entre ellos y/o con otros números:
 
 ```{r}
 a + b + 6
@@ -731,7 +707,7 @@ length(h) # Cuantos elementos hay en el vector
 
 ## **Vector numérico**
 
-- Vector conformado por la concatenación de números, puede representar variables numéricas continuas o discretas. Ej: 1.5 , 2.7 , 3.1 
+- Vector conformado por la concatenación de números, puede representar variables numéricas continuas o discretas. Ej: 1.5, 2.7, 3.1 
 
 - Los vectores numéricos se crean a través de la función concatenar “c()”
 
@@ -739,11 +715,11 @@ Como vimos anteriormente, un vector numérico se compone de uno o más números 
 
 ```{r}
 #un número=3
-c <- 1 + 2
+g <- 1 + 2
 #dos números=c(1,2)
 d <- c(1, 2)
 #c es un vector numérico
-class(c)
+class(g)
 ```
 
 Cuando tenemos un vector con más de un número, las operaciones aritméticas que realizamos se aplican a cada uno de sus elementos:
@@ -786,7 +762,9 @@ cuanti <- paste(cuan1, cuan2)
 print(cuanti)
 ```
 
-Un vector de caracteres almacena texto dentro de sus elementos. No permite que se realice operaciones aritméticas; no obstante, podríamos calcular la frecuencia con que se repite cada elemento. Por ejemplo:
+*Como ya se ha dicho, Un vector de caracteres almacena texto dentro de sus elementos. PERO*
+
+En un vector no se permite que se realicen operaciones aritméticas; no obstante, podríamos calcular la frecuencia con que se repite cada elemento. Por ejemplo:
 
 ```{r}
 ejemplo <- c("Y", "la", "queso", 3, 
@@ -805,7 +783,7 @@ table(ejemplo)
 Nótese que aunque se ha incluido un número a propósito (el 3) dentro de un vector con texto, igual reconoce este número como un texto. En este caso, se podría hacer la equivalencia: `3="3"="tres"`. Es por ello que cuando realizamos una tabla de frecuencias contabiliza cuántos 3 hay en vez de sumar los tres 3s.
 
 
-## **Ya pero, ¿qué son los factores en R?**
+#### **Ya pero, ¿qué son los factores en R?**
 
   - Una estructura de datos para manejar variables categoricas. 
 
@@ -922,13 +900,22 @@ base
 ```
 
 
-## Pero en este curso, comúnmente, también encontraremos y, a veces, crearemos:
+#### Pero en este curso, comúnmente, también encontraremos y, a veces, crearemos:
 
 - lists, que parecen vectores pero tienen elementos de diferentes tipos
 
 - functions, que se denominan closures (cierres) en R y operan con datos
 
 - Entre otros
+
+*Ahora lo que se viene debería ser como viene*
+
+Programando en R
+============================================================
+
+```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
+knitr::include_graphics("./images/programando.jpg") 
+```
 
 
 **En suma...**
