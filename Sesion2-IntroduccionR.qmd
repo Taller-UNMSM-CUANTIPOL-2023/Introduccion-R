@@ -206,11 +206,13 @@ starwars
     
 Vamos a trabajar en archivos con extension Rmarkdown (Rmd), pero para presentarlos de una manera amigable, podemos exportarlos en formato PDF, Html o en una página web.
 
-Para una mejor experiencia, antes de exportar a PDF, deberá instalar lo siguiente desde su consola:
+- Para Html, seleccionamos en el menú Knit \> Knit to html
 
-install.packages(‘tinytex’)
+- Para pdf, seleccionamos Knit \> Knit to PDF, pero antes de exportar en pdf deberá instalar lo siguiente desde su consola:
 
-tinytex::install_tinytex()
+  - install.packages(‘tinytex’)
+
+  - tinytex::install_tinytex()
 
 #### Asimismo, para un Knit a una página web, utilizaremos Rpubs, por lo que deberán crearse una cuenta: https://rpubs.com/users/new
 
@@ -218,7 +220,10 @@ Recomendación: Cuando creen sus archivos Rmd, que estos no contengan en su nomb
     
 - Diferencias sobre este tipo de archivos: [Script, R Markdown y R Notebook](https://www.youtube.com/watch?v=y7JPGlw6dJg)
 
+- Puedes revisar este Rpubs de [Gustavo Martínez Valdes para mejorar tu YAML](https://rpubs.com/gustavomtzv/874870):
 
+  - YAML (Yet Another Markdown Language): Allí se configuran las características generales que se arrojarán en el documento de salida o output, una vez que el documento en formato Markdown haya sido renderizado (con el comando knitr()).
+  
 #### Github
 
 Vamos a requerir que se creen una cuenta en GitHub. GitHub permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas de ordenador. Para fines de este curso, vamos a utilizar Github como repositorio para cargar nuestras bases de datos, administrar nuestros archivos etc.
@@ -236,6 +241,21 @@ Github como repositorio:
   - Cargue archivos seleccionando Add file > Upload files > Choose your files > Commit changes
 
 Si quiere profundizar más sobre el GitHub como repositorio: https://www.youtube.com/watch?v=JN6rzv4zSJ4s
+  
+  
+## GIT HUB:
+
+GITHUB DESKTOP DE ESCRITORIO: ¿COMO USAR? CREAR REPOSITORIOS, COMMIT Y PULL | LO BÁSICO: https://www.youtube.com/watch?v=UISDyE9KMlI
+
+GitHub README Profile: https://www.youtube.com/watch?v=HD4cnRuSGN0  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 **3. Environment (El entorno de variables)**
@@ -488,8 +508,7 @@ starwars
 **Instalación de paquetes**
 ============================================================
 
-Para instalar un paquete solo debes correr el siguiente comando con el nombre del paquete
-dentro del paréntesis entre comillas. 
+Para instalar un paquete solo debes correr el siguiente comando con el nombre del paquete dentro del paréntesis entre comillas. 
 
 ```{r}
 #install.packages("tidyverse")
@@ -497,16 +516,11 @@ dentro del paréntesis entre comillas.
 
 - Cuando instalas un paquete estás descargando una serie de funciones con un solo comando.
 
-- Recuenden: Los comandos en R tienen que estar con los espacios, comas, comillas, paréntesis
-y puntos exactamente de cierta forma , sino el comando no correrá! Es recomendable correr
-este comando en la consola porque solo se tiene que descargar un paquete una vez por lo cual
-si dejas el comando en tu script se podría volver a correr reinstalando un paquete instalado.
+- Recuenden: Los comandos en R tienen que estar con los espacios, comas, comillas, paréntesis y puntos exactamente de cierta forma, sino el comando no correrá! Es recomendable correr este comando en la consola porque solo se tiene que descargar un paquete una vez por lo cual si dejas el comando en tu script se podría volver a correr reinstalando un paquete instalado.
 
-En efecto, esto va a suceder otras veces con todos los paquetes que quieras instalar y abrir. 
-Ya que puedes ya tener el paquete descargado pero si no lo abres con el comando `library`, no podrás utilizar sus funciones. *Pues, por ejemplo, Tidyverse es un conjunto de paquetes, si lo abres estas abriendo todos los paquetes que este incluye.* 
+En efecto, esto va a suceder otras veces con todos los paquetes que quieras instalar y abrir. Ya que puedes ya tener el paquete descargado pero si no lo abres con el comando `library`, no podrás utilizar sus funciones. *Pues, por ejemplo, Tidyverse es un conjunto de paquetes, si lo abres estas abriendo todos los paquetes que este incluye.* 
 
-Otra opción es abrir solo el o los paquetes que necesitas usar ya que abrir el paquete
-de tidyverse a veces demora un poco debido a que son varios paquetes.
+Otra opción es abrir solo el o los paquetes que necesitas usar ya que abrir el paquete de tidyverse a veces demora un poco debido a que son varios paquetes.
 
 ```{r}
 library(dplyr)
@@ -525,9 +539,9 @@ Pero el paquete {pacman} nos permite realizar ambas acciones al mismo tiempo de 
 - Luego correr en un code chunk lo siguiente:
 
 ```{r}
-# instalar e invocar paquetes:
+# Instalar e invocar paquetes:
 pacman::p_load(dplyr, ggplot2, tidyr, purrr, knitr) 
-# Hicimos lo anterior solo en una linea de codigo.
+# Hicimos todo lo anterior solo en una linea de codigo
 ```
 
 Algo más: Organización de carpetas
@@ -567,98 +581,116 @@ Les exhorto revisar los foros de la comunidad de programadores como [StackOverfl
 
 ## **Sintaxis en R**
 
-El uso de R es bastante intuitivo y sigue un patrón lógico. Está compuesto de códigos y la combinación de estos códigos genera una sintaxis. Asimismo, R guarda la información de nuestras observaciones y variables a través de objetos.
+*El uso de R es intuitivo y sigue una estructura lógica.* 
 
-En un sentido global, la estructura general de una sintaxis puede resumirse como sigue: 
+Hasta ahora, parece que toda la acción es consecuencia de haber corrido un código. En fecto, casi todo está compuesto por códigos y la combinación de estos forma una sintaxis. Además, R almacena la información de nuestras observaciones y variables en objetos. En ese sentido, la estructura general de una sintaxis puede resumirse de la siguiente manera: 
 
-a un objeto dado se le asigna el resultado de una función, que a su vez se ejecuta sobre un conjunto de datos especificado, con una serie de configuraciones particulares. Veamos el siguiente ejemplo ficticio.
+- A un objeto determinado se le asigna el resultado de una función, que a su vez se ejecuta sobre un conjunto de datos especificado, con una serie de configuraciones particulares. 
 
+  - Por ejemplo:
 ```{r,echo=FALSE, out.width="90%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
 knitr::include_graphics("./images/sintaxis.jpg")
 ```
 
-Si se lee de izquierda a derecha, la línea de comando puede explicarse como sigue:
+Entonces, la línea de comando puede explicarse así (de izquierda a derecha):
 
 -   Primero se indica un objeto a crear, con el nombre que ustedes definan.
 
 -   Luego se indica el asignador, que expresa que todo lo que esté a la derecha de la flecha se guardará en el objeto creado a la izquierda. El asignador puede ser "<-" o también "="
 
--   Luego viene la función que en este caso permite leer archivos tipo Microsoft Excel. R trabaja con funciones que están dentro de "paquetes" que la comunidad va desarrollando. Podemos hacer nuestras operaciones con diversas funciones, y no hay una sola forma de hacerlo. Si se trata de funciones que no están predeterminadas en R, debemos instalar el paquete que las contiene y antes de ejecutarla debemos abrir la libreria.
+- A continuación, encontramos la función que, en este caso, nos permite leer archivos de tipo Microsoft Excel. 
+Notemos que R utiliza funciones que están disponibles en "paquetes" desarrollados por la comunidad. Podemos realizar nuestras operaciones utilizando diferentes funciones, ya que no existe una única forma de hacerlo. Si deseamos utilizar funciones que no están incluidas por defecto en R, debemos instalar el paquete y cargar la libreria respectivos para ejecutarlas.
 
--   Luego de la función, se abre un paréntesis que contiene los argumentos: instrucciones que especifican ciertos detalles de lo que queramos que la función realice. Los argumentos pueden escribirse de distintas maneras y va a depender de lo que queramos hacer. En nuestro ejemplo:
+- Luego de la función, se abre un paréntesis que contiene los argumentos: instrucciones que especifican ciertos detalles de lo que queramos que la función realice. Los argumentos pueden escribirse de distintas maneras y va a depender de lo que queramos hacer. En nuestro ejemplo:
 
-  - El primer argumento indica la información a leer, en este caso indica un archivo de tipo Excel (extensión xlsx). 
+    - El primer argumento indica la información a leer, en este caso indica un archivo de tipo Excel (extensión xlsx). 
 
-  - El segundo argumento indica la hoja del archivo a leer. 
+    - El segundo argumento indica la hoja del archivo a leer. 
 
-  - El tercer argumento indica qué columnas se leerán de forma específica (en este caso, las primeras diez).
+    - El tercer argumento indica qué columnas se leerán de forma específica (en este caso, las primeras diez).
 
-
-
-
-
-
-
+*Tomando esto en cuenta, pasemos a los valores*
 
 ## **Valores**
 
 Es el elemento más básico que existe en el entorno de R
 
-  - 5 es un valor numérico
-
-  - 5*6 es también un valor numérico
-
-  - "dos" es un valor character
-
-  - "dos días" es también un valor character
-
+  - Son valores numéricos:
+```{r}
+3
+9*5 
+7+6
+```
+ 
+  - Son valores character:
+```{r}
+"mes"
+"un mes"
+```
+  
   - FALSE es un valor booleano o lógico
+```{r}
+7+6 > 45
+```
 
-
-## **Vectores**
+### **Vectores**
 
 Recordemos los vectores en matematicas o física: 
 
-  - Algo que tenia magnitud o modulo, direccion y sentido. Los componentes de un vector se guardan en coordenadas:
+  - Algo que tenia magnitud o modulo, direccion y sentido, y que los componentes de un vector se guardan en coordenadas:
   
     - Una cosa como (x,y,z)
 
-Podemos utilizar esta idea para los vectores en R:
-
+*Podemos utilizar esta idea para los vectores en R* 
 *Así como vimos que una variable puede almacenar un objeto, un vector puede almacenar varios objetos en orden*
 
-  - Un vector es un espacio de memoria en la computadora que se usa para guardar informacion de cualquier cosa. Efectivamente, los vectores son una colección de valores
+Un vector es un espacio de memoria en la computadora que se usa para guardar informacion de cualquier cosa. Efectivamente, **los vectores son una colección de valores**.
 
 Para agrupar esos valores utilizamos el comando c()
 
-  - Así es, `c` ya es una función en R, y si creo una variable con el mismo nombre, significaría que ya no podría usar `c()` para combinar elementos.
+  - Así es, `c` ya es una función en R, y si crea una variable con el mismo nombre, significaría que ya no se podría usar `c()` para combinar/concatenar elementos. *Entonces, para crear un vector de múltiples valores diferentes usamos la función de combinación, llamada c para abreviar. Esto simplemente combina toda la entrada que se le da en un solo vector. así es que mejor eviten crear un objeto con la letra c xd*
 
-Estos también pueden ser de distinto tipo:
+Estos vectores también pueden ser de distinto tipo:
 
 ```{r}
-c(5, 5*6)
-c("dos", "dos días")
-c(5*6, "días")
+c(9, 9*5)
+c("mes", "un mes")
+c(9*5, "mes")
 ```
 
-
-
-
+*Ahora pasemos a los objetos en R*
 
 ### Objetos
 
-R en gran medida es un lenguaje orientado a objetos por lo que el resultado del código que ejecutamos puede ser encapsulado en un objeto para ser usado más adelante. Retomando el ejemplo anterior podemos ejecutar el siguiente código:
+- Notar que ninguno de los valores ni vectores anteriores fueron almacenados en un objeto. Si quisiera llamarlos, ¿cómo haría?
+
+- Debo definirlos, especificando tres inputs:
+
+  - nombre del objeto
+
+  - utilizar el operador asignación <- (pensarlo como un =)
+
+  - contenido
+  
+*R en gran medida es un lenguaje orientado a objetos por lo que el resultado del código que ejecutamos puede ser encapsulado en un objeto para ser usado más adelante. Retomando el ejemplo anterior podemos ejecutar el siguiente código:*
 
 ```{r}
-a <- 2 + 2
+a <- 7 + 6
 a
 ```
 
-En el ejemplo anterior, he creado un objeto `a` y luego he llamado ese objeto mencionando para que muestre lo que lleva adentro (4). Ahora crearé el objeto `b`:
+En el ejemplo anterior, he creado un objeto `a` y luego he llamado ese objeto mencionando para que muestre lo que lleva adentro (13). Ahora crearé el objeto `b`:
 
 ```{r}
-b <- 5 + 1
+5 + 1 -> b 
 b
+```
+
+*Si ejecuta el código, verá que el panel Environment (Entorno) en la mano derecha de RStudio ahora tiene tres variables, una para ‘a’ y otra para b. y el último objeto que creé h*
+
+```{r}
+h <- a+b
+h
 ```
 
 El objeto `a` y `b` son vectores numéricos por lo que puedo realizar operaciones entre ellos. En primera instancia puedo sumarlos entre ellos y/o con otros números:
@@ -667,9 +699,41 @@ El objeto `a` y `b` son vectores numéricos por lo que puedo realizar operacione
 a + b + 6
 ```
 
-A continuación veremos los tipos de objetos principales en R. Para poder verificar el tipo de objeto nos apoyaremos de la función `class()`
+¿Pero hay más tipos de vectores? *Para ello, también debemos tomar en cuenta los tipos de objetos en R*
 
-a.  **Vector numérico**
+# **Tipos de objetos en R**
+
+Una parte clave para iniciar el manejo del programa es identificar los diversos objetos que podemos crear, manipular y utilizar. Para la definición de objetos en R será necesario previamente tener claridad teórica sobre lo que es una variable categórica nominal, categórica ordinal, numérica discreta y numérica continua.
+
+    | Nombre   | Ejemplo | Name      |
+    |----------|---------|-----------|
+    | Entero   | 1	     | Integer   |
+    | Numérico | 1.8     | Numeric   |
+    | Caracter | "uno" 	 | Character |
+    | Factor   | uno     | Factor    |
+    | Logico   | TRUE    | Logical   |
+    | Perdido  | NA      | Missing   |
+    | Vacío    | NULL    | null      |
+
+- Del mismo modo para los vectores:
+
+  - Definir un objeto me permite luego llamarlo para distintas operaciones (lo que se conoce como vectorización)
+
+R se conoce como un lenguaje vectorizado y las estructuras de datos básicas en R son todas vectores. Por ejemplo, cuando creamos la variable `h` anteriormente, parecía que era solo un número entero e integer. Pero en realidad, R almacena esto como un vector – una lista ordenada de elementos del mismo formato (en este caso, [double values](https://r-coder.com/tipos-datos-r/#:~:text=El%20tipo%20de%20datos%20double,de%20n%C3%BAmeros%20tambi%C3%A9n%20son%20doubles.)).
+
+Podemos ver el tipo de los elementos en un vector usando la función typeof, y podemos ver cuántos elementos hay en el vector usando la función length:
+
+```{r}
+typeof(h) # Tipo de los elementos
+length(h) # Cuantos elementos hay en el vector
+```
+*Esta característica de vectorización de R es un poco confusa al principio para aquellos que tienen experiencia previa en programación, but it’s actually one of the reasons R is so clean to write and relatively high performance for data science.*
+
+## **Vector numérico**
+
+- Vector conformado por la concatenación de números, puede representar variables numéricas continuas o discretas. Ej: 1.5 , 2.7 , 3.1 
+
+- Los vectores numéricos se crean a través de la función concatenar “c()”
 
 Como vimos anteriormente, un vector numérico se compone de uno o más números lo que nos permite realizar operaciones aritméticas. Por ejemplo:
 
@@ -689,142 +753,6 @@ Cuando tenemos un vector con más de un número, las operaciones aritméticas qu
 d*2
 ```
 
-b.  **Vector de caracteres**
-
-Un vector de caracteres almacena texto dentro de sus elementos. No permite que se realice operaciones aritméticas; no obstante, podríamos calcular la frecuencia con que se repite cada elemento. Por ejemplo:
-
-```{r}
-palabras<-c("arroz", "jamón", "queso", 4, 
-            "arroz", "jamón", "queso", 4, 
-            "arroz", "jamón", "queso", 4, 
-            "arroz", "jamón", "queso", 4)
-  
-class(palabras)  
-```
-
-El objeto `palabras` es un vector "character" que engloba texto únicamente, por lo que podemos contabilizar cuántos elementos repetidos tiene:
-
-```{r}
-table(palabras)
-```
-
-Nótese que aunque he incluido un número a propósito (el 4) dentro de un vector con texto, igual reconoce este número como un texto. En este caso, se podría hacer la equivalencia: `4="4"="cuatro"`. Es por ello que cuando realizamos una tabla de frecuencias contabiliza cuántos 4 hay en vez de sumar los cuatro 4s.
-
-c.  **Vector lógico**
-
-Un objeto lógico es un vector booleano dicotómico cuyos valores pueden ser únicamente `TRUE` o `FALSE`. Por ejemplo:
-
-```{r}
-resultados <- c(TRUE, TRUE, FALSE, FALSE)
-class(resultados)
-```
-
-Los vectores lógicos son útiles cuando se trabaja con condiciones lógicas del tipo `if else`. Por ejemplo:
-
-```{r}
-#una abreviación para TRUE es T y para FALSE es F
-aprueba_examen = T
-reprueba_examen = F
-#if(vector lógico){en caso TRUE}else{en caso FALSE}
-if(aprueba_examen) {"Felicitaciones por aprobar el examen"}else{"Más suerte la próxima"}
-
-if (reprueba_examen) {"Felicitaciones por aprobar el examen"}else{"Más suerte la próxima"}
-
-```
-
-d.  **Dataframes**
-
-En la práctica de R, es más probable que trabajemos con *dataframes* antes que vectores. Un dataframe es un conjunto de vectores o variables que constituyen una matriz. Por ejemplo:
-
-```{r}
-base <- data.frame(
-  persona = c("María Pía", "Santiago", "Pavel", "Mauricio"),
-  nota = c(15, 17, 20, 16),
-  aprueba = c(F, T, T, T))
-base
-```
-
-En este dataframe de valores aleatorios podemos ver que tenemos los tres tipos de vectores = character, numérico, y lógico. Cabe mencionar que deben haber el mismo número de valores dentro de cada vector, es por ello que, cada vector cuenta con 4 valores.
-
-Asimismo, un dataframe nos permite generar variables a partir de los valores de otras variables presentes en el dataframe. Por ejemplo:
-
-```{r}
-base$mensaje <- ifelse(base$aprueba,
-                       "Felicitaciones por pasar el examen",
-                       "Más suerte la próxima")
-base
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Objetos
-
-- Notar que ninguno de los valores ni vectores anteriores fueron almacenados en un objeto. Si quisiera llamarlos ¿cómo haría?
-
-- Tengo primero que definirlo! Especificando 3 inputs:
-
-  - nombre del objeto
-
-  - utilizar el operador asignación <- (pensarlo como un =)
-
-  - contenido
-
-```{r}
-obj1 <- 5
-obj1
-
-5 * 6 -> obj2 
-obj2
-
-obj3 = obj1 + obj2
-obj3
-
-```
-Si ejecuta el código, verá que el panel Environment (Entorno) en la mano derecha de RStudio ahora tiene tres variables, una para ‘a’ y otra para b. y el último objeto que creé c
-
-
-pero tambien podemos utilziar tipicos operadores matematicos para comparar valores. el simbolo del doble igual comprobara si por ejemplo estos dos valores son iguales. Mientra que el signo del mayor que comporbara si una variable lo es efectivamente sobre otra.
-
-
-```{r}
-obj2 == obj3 
-obj3 > obj2 
-```
-
-
-
-- Del mismo modo para los vectores:
-
-  - Definir un objeto me permite luego llamarlo para distintas operaciones (lo que se conoce como vectorización)
-
-*R se conoce como un lenguaje vectorized (vectorizado), y las estructuras de datos básicas en R son todas vectores. Por ejemplo, cuando creamos la variable obj1 anteriormente, parecía que era solo un whole number (número entero) and integer. Pero en realidad, R almacena esto como un vector – una lista ordenada de elementos del mismo formato (en este caso, double values).
-
-*Podemos ver el tipo de los elementos en un vector usando la función typeof, y podemos ver cuántos elementos hay en el vector usando la función length:*
-
-```{r}
-typeof(obj1) # Tipo de los elementos
-length(obj1) # Cuantos elementos hay en el vector
-```
-*Esta característica de vectorización de R es un poco confusa al principio para aquellos que tienen experiencia previa en programación, but it’s actually one of the reasons R is so clean to write and relatively high performance for data science. Para crear un vector de múltiples valores diferentes usamos la función de combinación, llamada c para abreviar. Esto simplemente combina toda la entrada que se le da en un solo vector.*
-
-
 ```{r}
 vector_0 <- c(1, 3, 4)
 vector_0
@@ -837,7 +765,19 @@ vector_2 # Los vectores se suman en parelelo
 
 ```
 
-  - Otros ejemplos con vectores del tipo character
+## **Vector de caracteres** / vector de factores
+
+Vector que sirve para representar variables categóricas. Pudiendo ser factores nominales u ordinales. 
+
+- Ej:
+
+  - "costa", "sierra", "selva".
+  
+  - Género: Masculino, femenino 
+  
+  - Nivel de confianza en instiuciones: muy alto, alto, bajo
+
+Por ejemplo:
 
 ```{r}
 cuan1 <- "genteeeeeee,"
@@ -846,90 +786,159 @@ cuanti <- paste(cuan1, cuan2)
 print(cuanti)
 ```
 
-
-#### Tipos de datos
-
-- Aparte de los numéricos y character. ¿Qué otro tipo de datos existen?
-
-    | Nombre   | Ejemplo | Name      |
-    |----------|---------|-----------|
-    | Entero	 | 1	     | Integer   |
-    | Numérico | 1.8	   | Numeric   |
-    | Caracter | "uno" 	 | Character |
-    | Factor   | uno	   | Factor    |
-    | Logico   | TRUE	   | Logical   |
-    | Perdido  | NA      | Missing   |
-    | Vacío    | NULL	   | null      |
-
-
-¿Cómo podemos conocer qué tipos de datos son? Podemos emplear el comando class() de forma genérica
+Un vector de caracteres almacena texto dentro de sus elementos. No permite que se realice operaciones aritméticas; no obstante, podríamos calcular la frecuencia con que se repite cada elemento. Por ejemplo:
 
 ```{r}
-class(5)
-## [1] "numeric"
-class("ARGENTINA")
-## [1] "character"
-class(TRUE) 
-## [1] "logical"
+ejemplo <- c("Y", "la", "queso", 3, 
+            "Y", "la", "queso", 3, 
+            "Y", "la", "queso", 3)
+ejemplo
+class(ejemplo)  
 ```
 
+El objeto `ejemplo` es un vector "character" que engloba texto únicamente, por lo que podemos contabilizar cuántos elementos repetidos tiene:
+
+```{r}
+table(ejemplo)
+```
+
+Nótese que aunque se ha incluido un número a propósito (el 3) dentro de un vector con texto, igual reconoce este número como un texto. En este caso, se podría hacer la equivalencia: `3="3"="tres"`. Es por ello que cuando realizamos una tabla de frecuencias contabiliza cuántos 3 hay en vez de sumar los tres 3s.
 
 
-    | Nombre   | Ejemplo | Name      |
-    |----------|---------|-----------|
-    | Entero	 | 1	     | Integer   |
-    | Numérico | 1.8	   | Numeric   |
-    | Caracter | "uno" 	 | Character |
-    | Factor   | uno	   | Factor    |
-    | Logico   | TRUE	   | Logical   |
-    | Perdido  | NA      | Missing   |
-    | Vacío    | NULL	   | null      |
+## **Ya pero, ¿qué son los factores en R?**
+
+  - Una estructura de datos para manejar variables categoricas. 
+
+  + Las **variables categóricas** son datos que toman una cantidad finita de valores
+  
+  + Por ejemplo:
+  
+    - Rango de edad: niño, joven, adulto
+    - Colores: rojo, verde, amarillo, ...
+    - Días de la semana: L/M/M/J/V/S/D
+    - Entre otros...
+
+  + En analisis de datos, las variables categoricas se tratan de manera diferente a las variables continuas o numericas.
+  
+  + Necesitamos un objeto en R para ello. Los factores permiten trabajar con modelos y graficas de variables categoricas (aquí su importancia).
+
+*Un factor nos permite representar una variable categórica. Se crean a través de la función **"factor()"**, pero antes de crear esta variable categoríca que se le asigan determinadas categorías. primero se crea como vector con estas categorías para luego asignarles su nombre.* *En las siguientes clases esto va a quedar más claro*
 
 
+## **Vector lógico**
+
+Un objeto lógico es un vector booleano dicotómico cuyos valores pueden ser únicamente `TRUE` o `FALSE`. Por ejemplo:
+
+```{r}
+resultados <- c(TRUE, TRUE, FALSE, FALSE)
+class(resultados)
+```
+
+Los vectores lógicos son útiles cuando se trabaja con condiciones lógicas del tipo `if else`. Por ejemplo:
+
+```{r}
+# una abreviación para TRUE es T y para FALSE es F
+aprueba_examen = T
+reprueba_examen = F
+
+# if(vector lógico){en caso TRUE}else{en caso FALSE}
+
+if(aprueba_examen) {"Felicitaciones"}else{"Más suerte a la próxima"}
+
+if (reprueba_examen) {"Felicitaciones"}else{"Más suerte a la próxima"}
+
+```
+
+Pero tambien podemos utilizar tipicos operadores matematicos para comparar valores. El simbolo del doble igual comprobara si, por ejemplo, estos dos valores son iguales. Mientra que el signo del mayor que comprobara si una variable lo es, efectivamente, sobre otra:
+
+```{r}
+aprueba_examen == reprueba_examen 
+aprueba_examen > reprueba_examen 
+```
+
+Se cuenta con diferentes **operadores lógicos**, como se muestra en la siguiente tabla:
+
+| Operator | Meaning                                                                                                                                                                                        |
+|-----------------------|-------------------------------------------------|
+| `x & y`  | Devuelve `TRUE` solo si `x` es `TRUE` **and** `y` es `TRUE`                                                                                                                                    |
+| `x | y`  | Returns `TRUE` only if `x` is `TRUE` **or** `y` is `TRUE` (or both are!)                                                                                                                       |
+| `!x`     | Llamado **not**, este operador voltea todos los elementos `TRUE` en `x` a `FALSE` (y viceversa)                                                                                                |
+| `x == y` | Returns `TRUE` if x is equal to y. Watch out! We use two equal signs to check if numbers are the same, not a single equal sign.                                                                |
+| `x < y`  | Returns `TRUE` if `x` is less than `y`. If you want to see if `x` is less than or equal to `y` you can use **`<=`**, and the reverse of these two operators, `>` and `>=`, also are available. |
 
 
+### Podemos emplear el comando `class()` de forma genérica para conocer qué tipos de datos son...
 
+Por ejemplo:
+```{r}
+class(8)
 
+class("UNMSM")
 
-
-
-
-
-
-
+class(TRUE) 
+```
 
 ## **Funciones (comandos)**
 
 Las funciones son comandos, son expresiones que encierran una orden predeterminada.
 
-Al invocar una función le estaremos diciendo a R que realice una tarea particular.
+- Al invocar una función le estaremos diciendo a R que realice una tarea particular.
 
-Para ejecutar una función R necesita de dos inputs:
+- Para ejecutar una función R necesita de dos inputs:
 
-- Nombre de la función
-- Argumento
-
-
-## **Data Frames (base de datos)**
+    - Nombre de la función
+    - Argumento
 
 
+*Finalmente*
+
+##  **Data Frames (base de datos)**
+
+Es una estructura de datos en la que se utilizan diferentes tipos de variables o vectores que constituyen una matriz. Entonces, encontramos columnas con caracteres, numeros y variables logicas. 
+  
+- Son importantes para graficas, analisis y modelos con muchas variables estadisticas
+
+*En la práctica de R, es más probable que trabajemos con dataframes antes que vectores* 
+
+Por ejemplo:
+
+```{r}
+base <- data.frame(
+  persona = c("Joel", "Santiago", "María Pía", "Pavel"),
+  nota = c(15, 17, 20, 16),
+  aprueba = c(F, T, T, T))
+base
+```
+
+En este dataframe de valores aleatorios podemos ver que tenemos los tres tipos de vectores = character, numérico, y lógico. Cabe mencionar que deben haber el mismo número de valores dentro de cada vector, es por ello que, cada vector cuenta con 4 valores.
+
+Asimismo, un dataframe nos permite generar variables a partir de los valores de otras variables presentes en el dataframe. Por ejemplo:
+
+```{r}
+base$mensaje <- ifelse(base$aprueba,
+                       "Felicitaciones",
+                       "Más suerte a la próxima")
+base
+```
 
 
+## Pero en este curso, comúnmente, también encontraremos y, a veces, crearemos:
 
+- lists, que parecen vectores pero tienen elementos de diferentes tipos
 
+- functions, que se denominan closures (cierres) en R y operan con datos
 
-
-
-
-
-
+- Entre otros
 
 
 **En suma...**
 
 - 4 PANELES  
 
-Parece que todo la acción es consecuencia de haber corrido un código. Y es así
+es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
+
+
+Parece que toda la acción es consecuencia de haber corrido un código. Y es asi
 
 En la consola veremos el código en morado si corrió bien y debajo el output o salida como consecuencia de la sentencia
 
@@ -940,8 +949,13 @@ Si el código implica generar un gráfico lo veremos en ese caso en el panel de 
 En el script no pasará nada, ya que allí solo escribimos y llamamos al código al momento de correrlo
 
 
-es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
+  + Variables: espacio para guardar un objeto
+  
+  + Vectores: una o mas varaibles del mismo tipo
+  
+  + Matrices: Varias columnas (o vectores) del mismo tipo como columnas
 
+  + df: Una forma de datos tabulares bidimensionales que exploraremos con gran detalle en este curso.
 
 **Referencias**:
 
