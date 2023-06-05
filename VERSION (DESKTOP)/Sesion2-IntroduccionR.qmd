@@ -1,0 +1,1008 @@
+---
+title: "**<b style = 'color : #E34B2A;'>Sesión 2: Introducción al R y Rstudio</b>**"
+subtitle: 'Taller de Investigación: Política Cuantitativa "CUANTIPOL" - UNMSM'
+author: "Asesor: Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
+date: "2023-6-4"
+theme:
+  dark: darkly
+  light: flatly
+toc: true
+always_allow_html: true
+format:
+  html:
+    mainfont: Georgia
+    self-contained: true
+---
+
+```{r,echo=FALSE, out.width="65%",fig.align="center"}
+knitr::include_graphics("./images/logoCUANTIPOL.jpg")  # Para plotear cualquier imagen
+# Puedes centrar, aumentar o disminuir el tamaño del gráfico (buscar códigos en internet) 
+```
+
+*Hola con todas y todos, me llamo Joel, soy de Ayacucho, estoy en el septimo ciclo de la carrera de ciencia politica y gobierno. y hoy voy a presentarles una introduccion a R*
+
+*RECOMENDACIONES INICIALES: SÉ QUE PUEDE SER ABRUMADOR porque ES APRENDER UN LENGUAJE NUEVO, O SEA, NO VA A SER FACIL. pero el PROGRAMA es MUY INTUTIVO y además yo y mis compañeros y compañeras les vamos a ayudar*
+
+*practicar los ejercicios: COMPRENDER MEJOR: CURIOSIDAD e intuicion*
+
+*Y CUALQUIER DUDA, PREGUNTEN POR EL CHAT, POR PRIVADO O PRENDAN EL MICROFONO O TAMBIÉN PUEDEN ENVIARME UN CORREO*
+
+*ENTONCES*
+
+¿Qué buscamos con el taller?
+============================================================
+
+- Familiarizarnos con el lenguaje, el uso de R y explorar los formas más comunes y útiles para el análisis de datos.
+
+- No es un curso exhaustivo que cubra todas las aplicaciones y posibilidades que se pueden aprovechar con R.
+
+*Vamos a tratar de hablar "todos el mismo idioma" es decir trabajar sobre los fundamentos DE R, y así les permitirá ampliar sus conocimientos DE R en función de los usos que deseen o necesiten darle.*
+
+*La estrategia consistirá en abordar los conceptos principales y proporcionar una visión general de temas más avanzados o específicos como punto de partida, que les permita profundizar la investigación que desarrollen a lo largo del curso.*
+
+*Además, les compartiré algunos consejos prácticos y atajos que hubiera deseado conocer cuando comencé con R, y que espero les resulten muy útiles y beneficiosos.* *O sea, en la internet hay un monton de informacion sobre R, introducciones, Rmd, R, etc*
+
+*El siguiente objetivo del taller es su*
+
+- Proyecto final del taller:
+
+  - Ejemplos...
+
+    - En Github: [Determinantes del desempleo juvenil en el mundo](https://luccemhu.github.io/) (CAMBIAR EL NOMBRE DE ESTO JOEL)
+
+    - En Rpubs: [¿Los países productores de petróleo son los Estados más contaminantes?](https://rpubs.com/LuchoValverde/920711)
+
+
+Repasemos la instalación...
+============================================================
+
+Configurar el directorio de trabajo
+============================================================
+
+- Es fundamental considerar la ubicación de los archivos al importar y exportar nuestros datos. Esta carpeta, en la que se cargan los archivos, se conoce como "Working directory" o directorio de trabajo.
+
+*R funciona como un entorno de trabajo temporal en el cual el usuario puede añadir datos y objetos. Sin embargo, si los análisis no se guardan, será necesario repetir las instrucciones para obtener los resultados nuevamente. Por esta razón, es importante configurar una carpeta predeterminada en nuestro ordenador. De este modo, el programa buscará los archivos que se deben ejecutar y guardará los archivos modificados en esa ubicación específica.*
+
+- Para encontrar nuestro lugar actual directorio de trabajo o el "Set Working Directory", debemos correr el siguiente comando en la consola: `getwd()` (sin las comillas invertidas). Si ejecuta este comando desde un archivo Rmd, obtendrá la ubicación del archivo script actual.
+
+- Para cambiar nuestro directorio de trabajo a uno específico, podemos utilizar la siguiente función:
+
+````markdown
+setwd() # Establecer el nuevo directorio de trabajo
+dir() # Ver qué archivos están en el directorio de trabajo o en el lugar en que se encuentre
+````
+
+- Otra opción para establecer nuestro directorio de trabajo:
+
+  - Nos dirigirnos al menú superior y seleccionamos las siguientes pestañas: “Session” \> “Set Working Directory” \> “Choose Directory”. Esto abrirá una ventana emergente, en la que podemos buscar la carpeta en la cual deseamos trabajar. Una vez ubicada, la seleccionamos y hacemos clic en "Open". Para verificar el cambio, volvemos a ejecutar la función `getwd()` en la consola.
+
+- Si necesitamos importar, por ejemplo, una base de datos desde otra subcarpeta (dfs, en este caso):
+
+````markdown
+library(rio) # Convocamos el paquete
+data = import("./dfs/pavimentandoconvotos.sav") 
+# './' El punto + el slash indican que importaremos 
+# la base de una subcarpeta llamada 'dfs' 
+````
+
+- Luego aprenderán otros modos para importar bases de datos directamente desde internet. 
+
+¿Qué es R?
+============================================================
+
+- R es un lenguaje y software que permite análisis estadísticos y gráficos.
+
+  - Lenguaje porque posee su propia sintaxis, a partir de la cual se pueden escribir sentencias y comandos.
+
+  - Es un software porque es al mismo tiempo un programa con múltiples funcionalidades
+
+## ... ¿Y RStudio?
+
+- Rstudio es un "integrated development environment" - [IDE](https://posit.co/products/open-source/rstudio/): un interfaz amigable y poderoso para trabajar con R.
+
+*es un entorno de desarrollo integrado para R o como se indica en la pagina de posit, “un set de herramientas integradas para ayudar a ser más productivo con R”*
+
+Pero si hay más softwares estadísticos, ¿por qué usamos (o deberíamos usar) R?
+============================================================
+
+- Costo: Software libre
+
+*R es un programa de codigo abierto y gratuito (no requiere licencia como otros softwares). Es decir de acceso libre y que se expande con contribuciones de la comunidad de usuarios, lo que se traduce en paquetes con funciones myu especificas y variadas que veremos*
+    
+- Potencia (N° herramientas): Comunidad que crea nuevas herramientas (packages) constantemente.
+
+- Accesibilidad al usuario: Lenguaje de Programación R (Antes de 1970)
+
+*Es tremendamente eficiente para el procesamiento de grandes volúmenes de datos.*
+    
+- R es un lenguaje del tipo "domain-specific language (DSL)" porque sus funciones están pensados para un área de uso o dominio específico
+    
+*En este caso Está especialmente enfocado en tareas de cómputo y análisis estadístico y gráfico de manera eficiente y sucinta.*
+    
+-   Versatilidad: Muchas extensiones: [GIS](https://mappinggis.com/2019/02/r-y-gis-que-es-r-y-su-relacion-con-los-sig/), [Quarto](https://quarto.org/), etc.
+
+*y además es un programa muy versátil que permite utilizar la misma herramienta para una gran variedad de fines y aplicaciones.*
+
+## ¿Pará qué podemos usar R?
+
+*COMO ya hemos advertido, principalmente, su importancia radica en que*
+
+- Proporciona una amplia variedad de herramientas para generar visualizaciones y personalización de gráficos de datos de alta calidad, además, junto con Rstudio permiten la automotización de reportes y la replicabilidad de los análisis mediante el uso de scripts.
+
+- Pero también...
+
+  - *Es una herramienta de procesamiento estadístico*: limpieza, manejo, almacenamiento de datos e integración con distintas bases de datos o lenguajes de otros programas (Spss, Python o Stata)
+
+  - *Amplia variedad de técnicas estadísticas para el análisis de datos*: modelos lineales, pruebas estadísticas, análisis de series de tiempo, clasificación, agrupación, enter otros.
+
+  - Posibilidad de creación de librerías propias para trabajos en específico
+
+  - Implementar análisis con algoritmos de Machine Learning, data mining y big data. 
+    
+  - Web Scraping, generar tableros o aplicaciones como shiny
+
+- Después de lo que se ha expuesto, les animo a que continúen explorando R y sus diversos usos a través de diferentes fuentes, siendo este curso una de ellas.
+
+**INTERFAZ**
+============================================================
+*Básicamente al trabajar en RStudio, estaremos interacturando con estos 4 paneles. Veamos para qué utilizamos cada uno:*
+
+- **4 paneles (en esentido horario):**
+
+```{r, echo = FALSE, out.width = "115%", fig.align = "center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
+knitr::include_graphics("./images/interface.jpg") 
+```
+
+**1. Console (La consola)**
+
+- Útil cuando queremos ejecutar porciones de código pequeñas
+
+*o realizar operaciones matemáticas, o sea, R es como una calculadora avanzada)*
+
+- Realizar cálculos y operaciones matemáticas como una calculadora avanzada
+
+*Aprovechemos que hay datasets precargados en R*
+```{r}
+#cars
+head(cars)
+names(cars) # Nombre de las variables
+#table(cars)
+str(cars) # Estructura de las variables
+```
+
+```{r}
+1000454656/256 # Dividir grandes números
+10*15 # Multiplicar y realizar otras operaciones matemáticas
+pi # Obtener el valor de pi 
+```
+
+```{r}
+mean(c(1, 2, 3, 4, 5, 6)) # Media de los primeros 6 números naturales
+```
+
+*hasta aquí no ma papi*
+```{r}
+airquality 
+library(tidyverse)  
+starwars
+```
+
+- Visualizar y registrar el output de nuestros códigos
+
+*La consola es la salida de R,podemos ingresar código de R directamente y podemos obervar lo que ocurra al correr el código. A diferencia del script este ouptut se limpia cada vez que abrimos RStudio, es decir, no se guardará como parte de un documento. además, Cuando el código corre bien, veremos letras moradas en la consola y cuando hay un error o una advertencia, en color rojo.         Además, cualquier código que ejecutemos en el script se mostrará en la consola, lo que nos permite llevar un registro de nuestras acciones hechas en el script durante la sesión, a menos que lo borremos con la escoba de aquí xd* 
+
+**2. Script (El editor)**
+
+- Panel en el que se crean y modifican scripts, entre otros tipos de archivos...
+
+  - Por ejemplo, para crear un script de extensión .R: vamos a File \> New File \> R Script. 
+
+  - Para abrir un script guardado en la computadora, vamos a File \> Open File
+
+*es nuestro cuaderno o bloc de notas digital en el que escribimos las líneas de código de nuestro proyecto y Una vez que guardemos el código, podemos preservar o retomar desde donde lo dejamos en futuras sesiones.*
+
+*R es muy fuerte en el apoyo a este enfoque narrativo computacional para el análisis, y lo hace a través de archivos o scripts de extensión .R y .Rmd como este. Estos archivos se pueden convertir a formatos de lectura más típicos como PDFs, archivos HTML o incluso documentos de Word a través del proceso de “knitting (tejer)” dentro de RStudio. Si hacemos el símil con Word, en este panel estaría el documento en blanco a editar.*
+
+### knitting en RStudio
+    
+Vamos a trabajar en archivos con extension Rmarkdown (Rmd) y otros, pero para presentarlos de una manera amigable, podemos exportarlos en formato PDF, Html o en una página web.
+
+- Para Html, seleccionamos en el menú Knit \> Knit to html
+
+- Para pdf, seleccionamos Knit \> Knit to PDF, pero antes de exportar en pdf deberá instalar lo siguiente desde su consola:
+
+  - install.packages(‘tinytex’)
+
+  - tinytex::install_tinytex()
+
+- Asimismo, para un Knit a una página web, utilizaremos [Rpubs](https://rpubs.com/users/new), por lo que deberán crearse una cuenta. 
+
+   - Recomendación: Cuando creen sus archivos Rmd, que estos no contengan en su nombre caracteres como tildes, símbolos, etc., eso no les permitirá realizar un knit en la web.    
+    
+- Diferencias sobre este tipo de archivos: [Script, R Markdown y R Notebook](https://www.youtube.com/watch?v=y7JPGlw6dJg)
+
+- Puedes revisar este Rpubs de [Gustavo Martínez Valdes para mejorar tu YAML](https://rpubs.com/gustavomtzv/874870):
+
+    - YAML (Yet Another Markdown Language): Allí se configuran las características generales que se arrojarán en el documento de salida o output, una vez que el documento en formato Markdown haya sido renderizado (con el comando `knitr()`).
+  
+- **Github**
+
+Vamos a requerir que se creen una cuenta en GitHub. Esta plataforma permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas de ordenador. Para fines de este curso, vamos a utilizar Github como repositorio para cargar nuestras bases de datos, administrar nuestros archivos etc.
+
+  - [Clic aqui para crearse una cuenta en Github](https://github.com/).
+
+- Github como repositorio:
+
+    - En la parte superior derecha seleccione “+”, seleccione “New repository” y siga los pasos precisando el nombre del respositorio, descripción (opcional), elija la visibilidad del repositorio (publico o privado) y cree su repositorio.
+
+    - Cargue archivos seleccionando Add file > Upload files > Choose your files > Commit changes
+
+[Clic aqui si quiere profundizar más sobre el GitHub como repositorio](https://www.youtube.com/watch?v=UISDyE9KMlI)
+
+**3. Environment (El entorno de variables)**
+
+-   Advertimos los objetos creados, pero también dataframes, tibbles, listas, entre otros.
+     
+*podemos visualizar los objetos que hemos creado en R. Más adelante profundizaremos en lo que significan los objetos, por ejemplo, si corres este código en la consola a<-9+2 te aparecerá en tu Environment un vector numérico de valor 9 y 18 este vector se ha denominado a.*
+```{r}
+value <- 9+2
+```
+*Este es el entorno de R que contiene todos los elementos que hemos generado y creado: valores, bases de datos, objetos, etc. Es el "lugar donde viven" estos elementos, como una especie de almacén que se va llenando a medida que vamos corriendo códigos que definen y modifican elementos*
+    
+```{r}
+x <- mean(c(1, 2, 3, 4, 5, 6)) # Numeros del 1 al 6 pueden guardarse en la variable x
+```
+
+```{r}
+datos <- airquality # La tabla de la calidad del aire en una variable llamada 'datos'
+```
+
+-   **¿Qué es una variable?**
+
+    -   Una variable es un espacio en la computadora en el que guardamos un objeto (como una caja con un nombre determinado para guardar cosas).
+
+4. **Panel de Visualización**
+============================================================
+
+- Se encuentran los archivos del usuario como si fuera la carpeta de “Mis Documentos” en Windows. De esta manera podemos acceder fácilmente a archivos de nuestra computadora y de nuestro directorio de trabajo.
+
+*Nos permite interactuar de forma fácil con los subdirectorios (pestaña Files)*
+
+*visualizar los gráficos que creamos (pestaña Plots)*
+*Correr en el Console para que aparezca en el 4to panel:*
+```{r}
+boxplot(airquality)
+```
+*cargar y buscar paquetes manualmente (pestaña Packages)*
+*Para instalar algun paquete, debemos digitar este comando, pero también podemos hacerlo desde*
+```{r}
+#install.packages("tinytex")
+```
+
+*acceder al help de cada función (pestaña Help)*
+```{r}
+#?cars
+
+# Otras opciones:
+#help(mean)
+#mean    # y pulsamos la tecla F1
+```
+
+*y visualizar contenido html (pestaña Viewer). Es una especie de atajo multiuso*
+*Correr el html del script en el que se trabaja*
+
+No olvidemos el... 
+
+**5. Menú superior**
+
+    - File
+    
+    - View: Zoom in, Zoom out
+
+    - Session
+    
+    - Tools
+
+    - Entre otros
+
+- Ahora sí, comencemos...  Vamos a configurar nuestro Rstudio
+
+Configuremos RStudio! *(Voluntarios)*
+============================================================
+
+Solo algunos cambios para iniciar...
+
+- 1) Nos dirigimos al menú superior: "Tools" \> "Global options..." \> "Code"...
+
+    \> "Display" \> y marcamos lo siguiente: 
+    
+    -   "Show line numbers"
+    
+    -   "Highlight R funtion Calls"
+   
+    -   "Rainbow parentheses"
+
+    \> "Saving" y cambiamos en "Default text encoding:" a "UTF-8"
+
+- 2) Luego nos dirigimos: "Tools" \> "Global options..."
+
+    \> "Appereance" \> y marcamos lo siguiente:
+
+    -   RStudio theme: Modern
+
+    -   Zoom: 175%
+
+    -   Editor font: Lucida Font
+
+    -   Editor font size: 10
+
+    -   Editor theme: Pastel On Dark
+
+**Ojo: podemos realizar estos cambios y otros según nuestra curiosidad o interés.**  
+
+Pero también es importante mejorar nuestros reportes...
+============================================================
+
+- Tomemos en cuenta la siguiente sintaxis de Rmd:
+
+  - **bolding words** <- negrita
+
+  - *italicizing words* <- cursiva
+
+  - ~~striking through~~ <- tachando
+
+    - Puedes combinar las anteriores: ***Cuantipol***
+
+  - 'comillas simples' <- alt + 3 + 9 <- ''
+
+  - `comillas invertidas` <- alt + 9 + 6 <- ``
+
+  - Para escribir una nueva oración, debemos dejar una linea de código para que no se junte todo en un solo párrafo.
+
+```markdown
+# Título
+
+## Subtítulo
+ 
+###
+```
+
+  - Realizar comentarios de los comandos en el code chunk o en el script con la almohadilla o el numeral: #
+
+    - Por ejemplo: Importemos los nombres del dataset starwars:
+    
+```{r,message=FALSE}
+library(tidyverse)  # Necesario para llamar al dataset
+names(starwars) # Sin este numeral, no se podría ejecutar los códigos en este code chunk
+```
+
+En ese sentido, para programar de manera ordenada, es de utilidad comentar el código utilizado y proporcionar una explicación precisa de lo que se realiza con cada función. Esto no solo nos ayuda a nosotros mismos a entender claramente el propósito de cada función cuando volvamos a revisar nuestro código, sino que también resulta útil para nuestros colegas que revisarán nuestra investigación.
+
+Es necesario comentar que los primeros lenguajes de programación tienen una fuerte influencia anglosajona. En 1963, se creó el código ASCII, un conjunto de caracteres basado en el alfabeto latino utilizado en el inglés moderno [(Mackenzie, 1980)](https://archive.org/details/mackenzie-coded-char-sets). En consecuencia, las primeras computadoras IBM adoptaron el estándar ASCII. Esto puede provocar dificultades en la lectura de caracteres especiales como "ñ", "ó" o "ü". Por tanto, al manipular datos, debemos considerar lo siguiente:
+
+-   Guardar los objetos con nombres cortos, autodescriptivos, sin espacios y sin caracteres especiales. Del mismo modo con las variables dentro de los objetos.
+
+-   Al exportar los datos, verificar si los nombres de los objetos y las variables dentro de ellos se han exportado correctamente, sin problemas de codificación ("*encoding*"). Por ejemplo,  al exportar a formato `.dta`, los nombres de las variables podrían aparecer de la siguiente manera:
+
+    | variable   | variable en `.dta` | Correcto nombre de variable |
+    |------------|--------------------|-----------------------------|
+    | año        | a?o                | year                        |
+    | educación  | educaci?n          | edu                         |
+    | antigüedad | antig?edad         | antiguedad                  |
+
+Consideremos otros consejos respecto a los code chunk:
+============================================================
+
+Nota: para advertir los cambios, es necesario comparar el script y el informe.
+
+```{r}
+# Code chunk básico
+```
+
+*Las marcas de triple retroceso le dicen a RStudio que lo que se está escribiendo debe ser ejecutable, y verás que RStudio agrega automáticamente un botón de reproducción al lado derecho y cambia nuestro estilo. La r minúscula le dice a RStudio que el lenguaje para este fragmento es R, pero se admiten otros lenguajes como SQL y Python.*
+```{python}
+print("HolaMundo")
+```
+
+*Dentro de un fragmento de código podemos escribir cualquier sintaxis de R válida, pero no el formato de texto. Puede ejecutar chunks en cualquier orden, pero la norma es escribir chunks para que se ejecuten de arriba a abajo como leeríamos un cuaderno o escribiríamos código informático.*
+
+- Código para no mostrar las advertencias y mensajes para todo nuestro reporte:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+
+```
+
+- Lo anterior, pero solo para un code chunk:
+
+  - Ojo: include = FALSE <- No muestra el código ni su resultado ni texto, etc., en el reporte. 
+
+```{r, include =FALSE,message=FALSE,warning=FALSE}
+
+```
+
+- Si solo queremos visualizar el resultado, pero no el código:
+
+```{r, echo =FALSE,message=FALSE,warning=FALSE}
+# echo = FALSE <- No muestra el código, pero sí su resultado
+# (conveniente para gráficos, mapas, etc.) 
+# Por ejemplo:
+plot(cars)
+```
+
+- Para mostrar el código, los gráficos, etc., pero no el resultado de su función:
+  
+  - results=FALSE
+```{r, results =FALSE,message=FALSE,warning=FALSE}
+# Por ejemplo:
+library(scatterplot3d)
+(f <- scatterplot3d(airquality[,c('Ozone', 'Wind', 'Month')]))
+```
+  
+  
+Atajos útiles de teclado, los más importantes...
+============================================================
+
+Podemos ver todos los atajos en el **Panel de atajos**: tools \> Keyboard Shortcuts Help <- alt + shift + k
+
+- **Crear code chunk**  <- Ctrl + alt + i 
+```{r}
+
+```
+
+- **Correr/ejecutar code** <- Alt + enter  
+```{r}
+library(tidyverse)
+starwars
+```
+
+- **Guardar avance** <- Ctrl + S
+
+- Ejecutar linea de código <- Ctrl + Enter
+
+- Knitear/renderizar a pdf/hml/etc <- Ctrl + Shift + k
+
+- Dar formato ordenado al código <- Ctrl + A
+
+- Para comentar múltiples líneas de código en un chunk: agrega el numeral al lado izquierdo en cada línea de código <- Ctrl/cmd + Shift + C
+
+- Para buscar y reemplazar varias palabras <- Ctrl + F
+
+- Reiniciar Rstudio <- Ctrl + shift + f10
+
+- Insertar 'pipe' <- Ctrl + shift + m <- `|>` o el pipe antiguo: %>%
+
+- Operador de asignación <- Alt + - (guion) o también podemos usar: <-
+
+- Arrastrar línea de código <- Alt + up o Alt + down
+
+- Para desplazarnos en cada pestaña de los scripts <- Ctrl + Alt + (flechas: izquierda o derecha)
+
+- Para insertar/crear secciones (títulos) <- Ctrl/cmd + shift + R
+
+**Instalación de paquetes**
+============================================================
+
+Para instalar un paquete solo debes correr el siguiente comando con el nombre del paquete dentro del paréntesis entre comillas. 
+
+```{r}
+#install.packages("tidyverse")
+```
+
+- Cuando instalas un paquete estás descargando una serie de funciones con un solo comando.
+
+- Recuenden: Los comandos en R tienen que estar con los espacios, comas, comillas, paréntesis y puntos exactamente de cierta forma, sino el comando no correrá! Es recomendable correr este comando en la consola porque solo se tiene que descargar un paquete una vez por lo cual si dejas el comando en tu script se podría volver a correr reinstalando un paquete instalado.
+
+En efecto, esto va a suceder otras veces con todos los paquetes que quieras instalar y abrir. Ya que puedes ya tener el paquete descargado pero si no lo abres con el comando `library`, no podrás utilizar sus funciones. *Pues, por ejemplo, Tidyverse es un conjunto de paquetes, si lo abres estas abriendo todos los paquetes que este incluye.* 
+
+Otra opción es abrir solo el o los paquetes que necesitas usar ya que abrir el paquete de tidyverse a veces demora un poco debido a que son varios paquetes.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(purrr)
+library(knitr)
+```
+
+*Actualmente, existe una forma moderna de llamar los paquetes que el clásico install.packages & library. que es a traves del paquete pacman, especifacemnte mediante la funcion pload* 
+
+Pero el paquete {pacman} nos permite realizar ambas acciones al mismo tiempo de la siguiente manera:
+
+- Instalar el paquete pacman en la consola: install.packages("pacman")
+
+- Luego correr en un code chunk lo siguiente:
+
+```{r}
+# Instalar e invocar paquetes:
+pacman::p_load(dplyr, ggplot2, tidyr, purrr, knitr) 
+# Hicimos todo lo anterior solo en una linea de codigo
+```
+
+Algo más: Organización de carpetas
+============================================================
+
+Es importante conservar un orden para realizar análisis de datos o una investigación. Se sugiere la siguiente estructura:
+
+-   Nombre de la carpeta principal
+
+    -   códigos
+
+    -   datos
+
+        -   original
+        -   procesados
+
+    -   resultados
+
+        -   tablas
+        -   gráficos
+        -   Htmls, Pdfs, etc
+
+    -   literatura
+
+Les exhorto revisar los foros de la comunidad de programadores como [StackOverflow](https://stackoverflow.com/), [R Bloggers](https://www.r-bloggers.com/) en la que se realizan y absuelven dudas frecuentes o especificas.
+
+*Ahora sí ya estamos listos para meternos de lleno en los conceptos principales de R e ir, en simultaneo, corriendo y probando cada aplicación que vayamos viendo. Esta será la dinámica propuesta para el aprendizaje.*
+
+
+*BREAK 10 MINUTOS*
+
+
+*Comenzaremos por los elementos fundamentales, para construir desde lo más básico de manera aditiva y progresiva.*
+
+**Elementos fundamentales**
+============================================================
+
+## **Sintaxis en R**
+
+*El uso de R es intuitivo y sigue una estructura lógica.* 
+
+Hasta ahora, parece que toda la acción es consecuencia de haber corrido un código. En fecto, casi todo está compuesto por códigos y la combinación de estos forma una sintaxis. Además, R almacena la información de nuestras observaciones y variables en objetos. En ese sentido, la estructura general de una sintaxis puede resumirse de la siguiente manera: 
+
+- A un objeto determinado se le asigna el resultado de una función, que a su vez se ejecuta sobre un conjunto de datos especificado, con una serie de configuraciones particulares. 
+
+  - Por ejemplo:
+```{r,echo=FALSE, out.width="90%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
+knitr::include_graphics("./images/sintaxis.jpg")
+```
+
+Entonces, la línea de comando puede explicarse así (de izquierda a derecha):
+
+-   Primero se indica un objeto a crear, con el nombre que ustedes definan.
+
+-   Luego se indica el asignador, que expresa que todo lo que esté a la derecha de la flecha se guardará en el objeto creado a la izquierda. El asignador puede ser "<-" o también "="
+
+- A continuación, encontramos la función que, en este caso, nos permite leer archivos de tipo Microsoft Excel. 
+Notemos que R utiliza funciones que están disponibles en "paquetes" desarrollados por la comunidad. Podemos realizar nuestras operaciones utilizando diferentes funciones, ya que no existe una única forma de hacerlo. Si deseamos utilizar funciones que no están incluidas por defecto en R, debemos instalar el paquete y cargar la libreria respectivos para ejecutarlas.
+
+- Luego de la función, se abre un paréntesis que contiene los argumentos: instrucciones que especifican ciertos detalles de lo que queramos que la función realice. Los argumentos pueden escribirse de distintas maneras y va a depender de lo que queramos hacer. En nuestro ejemplo:
+
+    - El primer argumento indica la información a leer, en este caso indica un archivo de tipo Excel (extensión xlsx). 
+
+    - El segundo argumento indica la hoja del archivo a leer. 
+
+    - El tercer argumento indica qué columnas se leerán de forma específica (en este caso, las primeras diez).
+
+*Tomando esto en cuenta, pasemos a los valores*
+
+## **Valores**
+
+Es el elemento más básico que existe en el entorno de R
+
+  - Son valores numéricos:
+```{r}
+3
+9*5 
+7+6
+```
+ 
+  - Son valores character:
+```{r}
+"mes"
+"un mes"
+```
+  
+  - FALSE es un valor booleano o lógico
+```{r}
+7+6 > 45
+```
+
+### **Vectores**
+
+Recordemos los vectores en matematicas o física: 
+
+  - Algo que tenia magnitud o modulo, direccion y sentido, y que los componentes de un vector se guardan en coordenadas:
+  
+    - Una cosa como (x,y,z)
+
+*Podemos utilizar esta idea para los vectores en R* 
+*Así como vimos que una variable puede almacenar un objeto, un vector puede almacenar varios objetos en orden*
+
+Un vector es un espacio de memoria en la computadora que se usa para guardar informacion de cualquier cosa. Efectivamente, **los vectores son una colección de valores**.
+
+Para agrupar esos valores utilizamos el comando c()
+
+  - Así es, `c` ya es una función en R, y si crea una variable con el mismo nombre, significaría que ya no se podría usar `c()` para combinar/concatenar elementos. *Entonces, para crear un vector de múltiples valores diferentes usamos la función de combinación, llamada c para abreviar. Esto simplemente combina toda la entrada que se le da en un solo vector. así es que mejor eviten crear un objeto con la letra c xd*
+
+Estos vectores también pueden ser de distinto tipo:
+
+```{r}
+c(9, 9*5)
+c("mes", "un mes")
+c(9*5, "mes")
+```
+
+*Ahora pasemos a los objetos en R*
+
+### **Objetos**
+
+- Notar que ninguno de los valores ni vectores anteriores fueron almacenados en un objeto. Si quisiera llamarlos, ¿cómo haría?
+
+- Debo definirlos, especificando tres inputs:
+
+  - nombre del objeto
+
+  - utilizar el operador asignación <- (pensarlo como un =)
+
+  - contenido
+  
+*R en gran medida es un lenguaje orientado a objetos por lo que el resultado del código que ejecutamos puede ser encapsulado en un objeto para ser usado más adelante. Retomando el ejemplo anterior podemos ejecutar el siguiente código:*
+
+```{r}
+a <- 7 + 6
+a
+```
+
+En el ejemplo anterior, he creado un objeto `a` y luego he llamado ese objeto mencionando para que muestre lo que lleva adentro (13). Ahora crearé el objeto `b`:
+
+```{r}
+5 + 1 -> b 
+b
+```
+
+*notemos qie Si ejecutamos el código, verán que en el panel Environment (Entorno) en la mano derecha de RStudio ahora tiene estas variables, una para ‘a’ y otra para b.*
+
+
+El objeto `a` y `b` son vectores numéricos por lo que puedo realizar operaciones entre ellos. En primera instancia puedo sumarlos entre ellos y/o con otros números:
+
+```{r}
+h <- a+b
+h
+```
+
+```{r}
+a + b + 6
+```
+
+¿Pero hay más tipos de vectores? *Para ello, también debemos tomar en cuenta los tipos de objetos en R*
+
+# **Tipos de objetos en R**
+
+Una parte clave para iniciar el manejo del programa es identificar los diversos objetos que podemos crear, manipular y utilizar. Para la definición de objetos en R será necesario previamente tener claridad teórica sobre lo que es una variable categórica nominal, categórica ordinal, numérica discreta y numérica continua.
+
+    | Nombre   | Ejemplo | Name      |
+    |----------|---------|-----------|
+    | Entero   | 1	     | Integer   |
+    | Numérico | 1.8     | Numeric   |
+    | Caracter | "uno" 	 | Character |
+    | Factor   | uno     | Factor    |
+    | Logico   | TRUE    | Logical   |
+    | Perdido  | NA      | Missing   |
+    | Vacío    | NULL    | null      |
+
+- Del mismo modo para los vectores:
+
+  - Definir un objeto me permite luego llamarlo para distintas operaciones (lo que se conoce como vectorización)
+
+R se conoce como un lenguaje vectorizado y las estructuras de datos básicas en R son todas vectores. Por ejemplo, cuando creamos la variable `h` anteriormente, parecía que era solo un número entero e integer. Pero en realidad, R almacena esto como un vector – una lista ordenada de elementos del mismo formato (en este caso, [double values](https://r-coder.com/tipos-datos-r/#:~:text=El%20tipo%20de%20datos%20double,de%20n%C3%BAmeros%20tambi%C3%A9n%20son%20doubles.)).
+
+Podemos ver el tipo de los elementos en un vector usando la función typeof, y podemos ver cuántos elementos hay en el vector usando la función length:
+
+```{r}
+typeof(h) # Tipo de los elementos
+length(h) # Cuantos elementos hay en el vector
+```
+*Esta característica de vectorización de R es un poco confusa al principio para aquellos que tienen experiencia previa en programación, but it’s actually one of the reasons R is so clean to write and relatively high performance for data science.*
+
+
+
+
+
+
+
+
+
+
+
+## **Vector numérico**
+
+- Vector conformado por la concatenación de números, puede representar variables numéricas continuas o discretas. Ej: 1.5, 2.7, 3.1 
+
+- Los vectores numéricos se crean a través de la función concatenar “c()”
+
+Como vimos anteriormente, un vector numérico se compone de uno o más números lo que nos permite realizar operaciones aritméticas. Por ejemplo:
+
+```{r}
+#un número=3
+g <- 1 + 2
+#dos números=c(1,2)
+d <- c(1, 2)
+#c es un vector numérico
+class(g)
+```
+
+Cuando tenemos un vector con más de un número, las operaciones aritméticas que realizamos se aplican a cada uno de sus elementos:
+
+```{r}
+#Cada elemento de d x 2
+d*2
+```
+
+```{r}
+vector_0 <- c(1, 3, 4)
+vector_0
+
+vector_1 <- vector_0 + 12
+vector_1 # Los vectores se suman en parelelo
+
+vector_2 <- vector_0 + (12:14)
+vector_2 # Los vectores se suman en parelelo
+
+```
+
+## **Vector de caracteres** / vector de factores
+
+Vector que sirve para representar variables categóricas. Pudiendo ser factores nominales u ordinales. 
+
+- Ej:
+
+  - "costa", "sierra", "selva".
+  
+  - Género: Masculino, femenino 
+  
+  - Nivel de confianza en instiuciones: muy alto, alto, bajo
+
+Por ejemplo:
+
+```{r}
+cuan1 <- "genteeeeeee,"
+cuan2 <- "ahora, sí se acabó el recreo"
+cuanti <- paste(cuan1, cuan2)
+print(cuanti)
+```
+
+*Como ya se ha dicho, Un vector de caracteres almacena texto dentro de sus elementos. PERO*
+
+En un vector no se permite que se realicen operaciones aritméticas; no obstante, podríamos calcular la frecuencia con que se repite cada elemento. Por ejemplo:
+
+```{r}
+ejemplo <- c("Y", "la", "queso", 3, 
+            "Y", "la", "queso", 3, 
+            "Y", "la", "queso", 3)
+ejemplo
+class(ejemplo)  
+```
+
+El objeto `ejemplo` es un vector "character" que engloba texto únicamente, por lo que podemos contabilizar cuántos elementos repetidos tiene:
+
+```{r}
+table(ejemplo)
+```
+
+Nótese que aunque se ha incluido un número a propósito (el 3) dentro de un vector con texto, igual reconoce este número como un texto. En este caso, se podría hacer la equivalencia: `3="3"="tres"`. Es por ello que cuando realizamos una tabla de frecuencias contabiliza cuántos 3 hay en vez de sumar los tres 3s.
+
+
+#### **Ya pero, ¿qué son los factores en R?**
+
+  - Una estructura de datos para manejar variables categoricas. 
+
+  + Las **variables categóricas** son datos que toman una cantidad finita de valores
+  
+  + Por ejemplo:
+  
+    - Rango de edad: niño, joven, adulto
+    - Colores: rojo, verde, amarillo, ...
+    - Días de la semana: L/M/M/J/V/S/D
+    - Entre otros...
+
+  + En analisis de datos, las variables categoricas se tratan de manera diferente a las variables continuas o numericas.
+  
+  + Necesitamos un objeto en R para ello. Los factores permiten trabajar con modelos y graficas de variables categoricas (aquí su importancia).
+
+*Un factor nos permite representar una variable categórica. Se crean a través de la función **"factor()"**, pero antes de crear esta variable categoríca que se le asigan determinadas categorías. primero se crea como vector con estas categorías para luego asignarles su nombre.* *En las siguientes clases esto va a quedar más claro*
+
+
+## **Vector lógico**
+
+Un objeto lógico es un vector booleano dicotómico cuyos valores pueden ser únicamente `TRUE` o `FALSE`. Por ejemplo:
+
+```{r}
+resultados <- c(TRUE, TRUE, FALSE, FALSE)
+class(resultados)
+```
+
+Los vectores lógicos son útiles cuando se trabaja con condiciones lógicas del tipo `if else`. Por ejemplo:
+
+```{r}
+# una abreviación para TRUE es T y para FALSE es F
+aprueba_examen = T
+reprueba_examen = F
+
+# if(vector lógico){en caso TRUE}else{en caso FALSE}
+
+if(aprueba_examen) {"Felicitaciones"}else{"Más suerte a la próxima"}
+
+if (reprueba_examen) {"Felicitaciones"}else{"Más suerte a la próxima"}
+
+```
+
+Pero tambien podemos utilizar tipicos operadores matematicos para comparar valores. El simbolo del doble igual comprobara si, por ejemplo, estos dos valores son iguales. Mientra que el signo del mayor que comprobara si una variable lo es, efectivamente, sobre otra:
+
+```{r}
+aprueba_examen == reprueba_examen 
+aprueba_examen > reprueba_examen 
+```
+
+Se cuenta con diferentes **operadores lógicos**, como se muestra en la siguiente tabla:
+
+| Operator | Meaning                                                                                                                                                                                        |
+|-----------------------|-------------------------------------------------|
+| `x & y`  | Devuelve `TRUE` solo si `x` es `TRUE` **and** `y` es `TRUE`                                                                                                                                    |
+| `x | y`  | Returns `TRUE` only if `x` is `TRUE` **or** `y` is `TRUE` (or both are!)                                                                                                                       |
+| `!x`     | Llamado **not**, este operador voltea todos los elementos `TRUE` en `x` a `FALSE` (y viceversa)                                                                                                |
+| `x == y` | Returns `TRUE` if x is equal to y. Watch out! We use two equal signs to check if numbers are the same, not a single equal sign.                                                                |
+| `x < y`  | Returns `TRUE` if `x` is less than `y`. If you want to see if `x` is less than or equal to `y` you can use **`<=`**, and the reverse of these two operators, `>` and `>=`, also are available. |
+
+
+### Podemos emplear el comando `class()` de forma genérica para conocer qué tipos de datos son...
+
+Por ejemplo:
+```{r}
+class(8)
+
+class("UNMSM")
+
+class(TRUE) 
+```
+
+## **Funciones (comandos)**
+
+Las funciones son comandos, son expresiones que encierran una orden predeterminada.
+
+- Al invocar una función le estaremos diciendo a R que realice una tarea particular.
+
+- Para ejecutar una función R necesita de dos inputs:
+
+    - Nombre de la función
+    - Argumento
+
+
+*Finalmente*
+
+##  **Data Frames (base de datos)**
+
+Es una estructura de datos en la que se utilizan diferentes tipos de variables o vectores que constituyen una matriz. Entonces, encontramos columnas con caracteres, numeros y variables logicas. 
+  
+- Son importantes para graficas, analisis y modelos con muchas variables estadisticas
+
+*En la práctica de R, es más probable que trabajemos con dataframes antes que vectores* 
+
+Por ejemplo:
+
+```{r}
+base <- data.frame(
+  persona = c("Joel", "Santiago", "María Pía", "Pavel"),
+  nota = c(15, 17, 20, 16),
+  aprueba = c(F, T, T, T))
+base
+```
+
+En este dataframe de valores aleatorios podemos ver que tenemos los tres tipos de vectores = character, numérico, y lógico. Cabe mencionar que deben haber el mismo número de valores dentro de cada vector, es por ello que, cada vector cuenta con 4 valores.
+
+Asimismo, un dataframe nos permite generar variables a partir de los valores de otras variables presentes en el dataframe. Por ejemplo:
+
+```{r}
+base$mensaje <- ifelse(base$aprueba,
+                       "Felicitaciones",
+                       "Más suerte a la próxima")
+base
+```
+
+
+#### Pero en este curso, comúnmente, también encontraremos y, a veces, crearemos:
+
+- lists, que parecen vectores pero tienen elementos de diferentes tipos
+
+- functions, que se denominan closures (cierres) en R y operan con datos
+
+- Entre otros
+
+*Ahora lo que se viene debería ser como viene*
+
+Programando en R
+============================================================
+
+```{r,echo=FALSE, out.width="65%",fig.align="center", fig.cap="Fuente: Benites, A... & Rodríguez, A. (2022). PPT curso de POL278 - Estadística para el análisis político 1 - 2022-1"}
+knitr::include_graphics("./images/programando.jpg") 
+```
+
+
+**En suma...**
+
+- 4 PANELES  
+
+es común definir al inicio un apartado en el cual se establece el directorio de trabajo o la carpeta en la que se importarán y exportarán los archivos. Segundo, un área en la que se instalarán todos los paquetes o librerías de extensiones necesarias para ejecutar el código. Tercero, un apartado que incluye toda la data que se utilizará en la investigación. Cuarto, la manipulación de la data en el orden en que aparecen los resultados. Por último, una sección en la que se exporta la data final en el formato indicado.
+
+
+Parece que toda la acción es consecuencia de haber corrido un código. Y es asi
+
+En la consola veremos el código en morado si corrió bien y debajo el output o salida como consecuencia de la sentencia
+
+Si el código implica definir un objeto, ese objeto aparecerá ahora en nuestro entorno de trabajo
+
+Si el código implica generar un gráfico lo veremos en ese caso en el panel de navegación
+
+En el script no pasará nada, ya que allí solo escribimos y llamamos al código al momento de correrlo
+
+
+  + Variables: espacio para guardar un objeto
+  
+  + Vectores: una o mas varaibles del mismo tipo
+  
+  + Matrices: Varias columnas (o vectores) del mismo tipo como columnas
+
+  + df: Una forma de datos tabulares bidimensionales que exploraremos con gran detalle en este curso.
+
+**Referencias**:
+
+- [Bosco Mendoza Vega (2018). R para principiantes. Libro electrónico. ](https://bookdown.org/jboscomendoza/r-principiantes4/)
+
+- [Chiroque, C. (2020). Data Política: Manual R para estadística aplicada al análisis político. Data Política: Lima.](https://christianchiroquer.github.io/ManualdeR/r-un-lenguaje-de-programaci%C3%B3n.html)
+
+- [Hanck, C., Arnold, M., Gerber, A., & Schmelzer, M. (2019). Introduction to Econometrics with R. University of Duisburg-Essen, 1-9.](https://www.econometrics-with-r.org/)
+
+- [Tiscornia Pablo - Introducción al procesamiento de datos con R para Ciencias Sociales. Aplicación práctica en la Encuesta Permanente de Hogares (EPH-INDEC).](https://intro-r-eph.netlify.app/bio.html)
+
+- Qlab. Santiago Sotelo y María Pía van Oordt
+
+- [Weksler, K. & Shokida. Curso de R para procesamiento de datos de la Encuesta Permanente de Hogares](https://diegokoz.github.io/Curso_R_EPH_clases/)
+
+- Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.” [First Edition](https://r4ds.had.co.nz/) y [Second Edition](https://r4ds.hadley.nz/)
+
+**Más recursos**:
+
+- [Trabajo con RMarkdown para reportes reproducibles](https://gorkang.github.io/R_preparacion_visualizacion_datos/trabajo-con-rmarkdown-para-reportes-reproducibles.html)
+
+- [Messy data](https://tidyr.tidyverse.org/)
+
+- [Tidy data](https://tidyr.tidyverse.org/articles/tidy-data.html)
+
+- [The R Graph Gallery](https://r-graph-gallery.com/)
+
+- [R-Ladies Lima](https://www.youtube.com/c/RLadiesLima/videos?app=desktop&view=0&sort=dd&shelf_id=0)
+
+- [Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+- [Data Transformation](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
+
+- [Data Tidyng](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
+
+- [Data Visualization with ggplot2](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf)
+
+- [Stringr](https://posit.co/wp-content/uploads/2022/10/strings-1.pdf)
+
+- [RStudio-IDE](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf)
+
+- [R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+- [Tipos de variables y escalas de medición](https://www.odiolaestadistica.com/estadistica-r/tipos-de-variables/)
+
+- [Pimp my RMD: a few tips for R Markdown](https://holtzy.github.io/Pimp-my-rmd/)
+
+- [ONLY - DATA](https://www.yan-holtz.com/blog.html)
+
+- [Por qué las estadísticas inteligentes son la clave para combatir el crimen](https://www.ted.com/talks/anne_milgram_why_smart_statistics_are_the_key_to_fighting_crime?language=es)
+
+
+
