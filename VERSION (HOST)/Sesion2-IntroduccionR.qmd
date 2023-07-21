@@ -1,8 +1,8 @@
 ---
 title: "**<b style = 'color : #E34B2A;'>Sesión 2: Introducción al R y Rstudio</b>**"
 subtitle: 'Taller de Investigación: Política Cuantitativa "CUANTIPOL" - UNMSM'
-author: "Asesor: Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
 date: "2023-6-4"
+author: "Asesor: Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
 theme:
   dark: darkly
   light: flatly
@@ -12,6 +12,7 @@ format:
   html:
     mainfont: Georgia
     self-contained: true
+include-in-header: header-hu.html
 ---
 
 ```{r,echo=FALSE, out.width="65%",fig.align="center"}

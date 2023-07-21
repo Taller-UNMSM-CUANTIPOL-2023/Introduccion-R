@@ -1,10 +1,12 @@
 ---
 title: "**<b style = 'color : #E34B2A;'>Sesión 2: Introducción al R y Rstudio</b>**"
 subtitle: 'Taller de Investigación: Política Cuantitativa "CUANTIPOL" - UNMSM'
-author: "Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
 date: "2023-6-4"
+date-modified: ''
+author: "Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
 format:
   pdf:
+    toc: true
     number-sections: true
     colorlinks: true
 ---
