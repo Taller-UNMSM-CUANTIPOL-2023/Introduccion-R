@@ -4,12 +4,31 @@ subtitle: 'Taller de Investigación: Política Cuantitativa "CUANTIPOL" - UNMSM'
 date: "2023-6-4"
 date-modified: ''
 author: "Joel Belsasar Ccallocunto \n **[@luccemhu](https://github.com/luccemhu)** \n a20196510@pucp.edu.pe"
+theme:
+  dark: darkly
+  light: flatly
+toc: true
+always_allow_html: true
+format:
+  html:
+    mainfont: Georgia
+    self-contained: true
+include-in-header: header-hu.html
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+````{=html}
+<!--
+Para knittear en PDF fachero:
 format:
   pdf:
     toc: true
     number-sections: true
     colorlinks: true
----
+-->
+````
+
 
 ```{r,echo=FALSE, out.width="65%",fig.align="center"}
 knitr::include_graphics("./images/logoCUANTIPOL.jpg")  # Para plotear cualquier imagen
